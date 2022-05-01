@@ -1,0 +1,10 @@
+J01 Patent attorney
+J02 Engineer, control and instrumentation
+J03 Training and development officer
+J04 Sales promotion account executive
+J05 Freight forwarder
+J06 Human resources officer
+J07 Materials engineer
+J08 Animator       
+J09 Surveyor, hydrographic
+J10 Archivist      

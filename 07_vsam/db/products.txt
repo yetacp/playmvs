@@ -1,0 +1,50 @@
+P001 Win note indicate    00008
+P002 Expert range always  00034
+P003 Significant may      00034
+P004 Cup three eye large  00023
+P005 Action approach      00029
+P006 Herself according    00021
+P007 Major yet go if      00043
+P008 Animal run discuss   00032
+P009 Mouth off color      00014
+P010 So job allow behind  00036
+P011 Notice growth        00023
+P012 Increase stand drop  00012
+P013 Agree there she      00026
+P014 Sit difference how   00003
+P015 Tell care then       00016
+P016 Impact nation over   00025
+P017 Land performance     00024
+P018 North idea rock ago  00039
+P019 Fear herself major   00050
+P020 Different laugh      00032
+P021 Product agency       00036
+P022 Game much none look  00026
+P023 Officer outside      00034
+P024 Inside cut most      00027
+P025 Sport expect five    00013
+P026 Computer pass        00015
+P027 Place work identify  00034
+P028 Democratic maybe     00013
+P029 Affect they leg      00040
+P030 Any hit many three   00015
+P031 Magazine unit        00049
+P032 Defense who so       00032
+P033 Eight final          00036
+P034 Become president     00008
+P035 Play skill stop      00010
+P036 Century evidence     00033
+P037 List third lawyer    00027
+P038 Fly after remain     00048
+P039 Explain than         00002
+P040 Allow treatment      00049
+P041 Mention shoulder     00049
+P042 Campaign second      00004
+P043 Develop similar      00008
+P044 Race morning face    00040
+P045 Question may man     00044
+P046 Reach resource       00012
+P047 Myself than          00031
+P048 Kitchen middle rise  00037
+P049 Town talk            00023
+P050 People baby while    00042

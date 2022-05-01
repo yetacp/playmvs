@@ -1,0 +1,19 @@
+Type                    3350
+Data Cyls                555
+Alternate Cyls             5
+Tracks per Cyl            30
+Bytes per Track       19.069 
+Bytes per Cyl        572.070 
+Bytes per Module 317.498.850
+
+DATA SET NAME:      HMVS01.SOURCE HMVS01.OBJ HMVS01.LOAD
+ORGANIZATION:       PO              PO              PO
+RECORD FORMAT:      FB              FB              U
+RECORD LENGTH:      80              80              0
+BLOCK LENGTH:       800             800             1024
+NUMBER OF EXTENTS:  1               1               1
+USED TRACKS:        1               1               1
+ALLOCATED TRACKS:   900             900             900
+ALLOCATION TYPE:    CYLINDER        CYLINDER        CYLINDER
+SECONDARY QUANTITY: 15              15              15
+NUMBER OF MEMBERS:  40              40              30

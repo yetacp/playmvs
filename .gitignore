@@ -1,0 +1,5 @@
+*.a
+*.o
+*.s
+pdpclib
+tmp.jcl_E

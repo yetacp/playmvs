@@ -1,0 +1,24 @@
+##
+## Panel definition for Utility Menu
+##
+##-----------------------------------------------------------------
+##  Copyright (c) 2012-, Tommy Sprinkle (tommy@tommysprinkle.com)  
+##  Licensed under the NEW BSD Open Source License
+##-----------------------------------------------------------------
+)ATTR DEFAULT(%+_)
+   ! TYPE(TEXT)   COLOR(BLUE) 
+   : TYPE(OUTPUT) INTENS(LOW)
+)BODY
++------------------------------- Utility Menu:MSG1                             +
++Option  ===>_COMMAND                                                          +
++
+%  1+Browser           -!DASD Dataset Browser                                  +
+%  S+System Stats      -!System Status and Information
++
++
++
++
++
++Hit%PF03/15+to terminate 
+)PROC
+)END

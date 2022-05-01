@@ -1,0 +1,36 @@
+##
+## Panel definition for Data Set Browser
+##
+##  tommy@tommysprinkle.com
+##
+)ATTR DEFAULT(%+_)
+   ! TYPE(OUTPUT) INTENS(HIGH)
+   : TYPE(OUTPUT) INTENS(LOW)
+)BODY
+!MSG1                        +Dataset Browser!MSG2                             +
++Command%===>_COMMAND                                                          +
++Dataset%----!DSN                                         +
++TTR    %===>_TTR   + Show Key%===>_Z+    Key%----:Z  +  Data%----:DATAL     +
+     +Offset  %0...2... 4...6... 8...A... C...E...
+     :OFF01 + :HEX01                              + :PRT01               +
+     :OFF02 + :HEX02                              + :PRT02               +
+     :OFF03 + :HEX03                              + :PRT03               +
+     :OFF04 + :HEX04                              + :PRT04               +
+     :OFF05 + :HEX05                              + :PRT05               +
+     :OFF06 + :HEX06                              + :PRT06               +
+     :OFF07 + :HEX07                              + :PRT07               +
+     :OFF08 + :HEX08                              + :PRT08               +
+     :OFF09 + :HEX09                              + :PRT09               +
+     :OFF10 + :HEX10                              + :PRT10               +
+     :OFF11 + :HEX11                              + :PRT11               +
+     :OFF12 + :HEX12                              + :PRT12               +
+     :OFF13 + :HEX13                              + :PRT13               +
+     :OFF14 + :HEX14                              + :PRT14               +
+     :OFF15 + :HEX15                              + :PRT15               +
+     :OFF16 + :HEX16                              + :PRT16               +
+     :OFF17 + :HEX17                              + :PRT17               +
+     :OFF18 + :HEX18                              + :PRT18               +
+     :OFF19 + :HEX19                              + :PRT19               +
+)PROC
+  .ZVARS = (SHOWKEY KEYL )
+)END
