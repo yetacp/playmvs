@@ -1,13 +1,17 @@
 # System dependent
 
+# PATH TO GCCMVS FOLDER
+GCCMVS = ../../gccmvs/
+RDRPREP = ../rdrprep/rdrprep
+
 HERCHOST = 127.0.0.1
 HERCPORT = 3505
 
-RDRPREP = ../../rdrprep/rdrprep
-CC      = ../../gccmvs/gccmvs
+CC      = $(GCCMVS)/gccmvs
 CFLAGS  = -S -O3
-#         -fverbose-asm
-INCLUDES = -I ../../gccmvs/pdpclib
+# -fverbose-asm
+
+INCLUDES = -I $(GCCMVS)/pdpclib
 
 all: clean asm install
 
