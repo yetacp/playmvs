@@ -130,6 +130,18 @@ Sint32 ez_recv(Sint16 *desc, Uint32 nbyte, void *buf, Sint32 *errno)
         [nbyte] "r"(&nbyte),
         [retcode] "r"(&retcode)
         : "0", "1", "15");
+
+    /* Convert to EBCDIC*/
+    if (retcode > 0)
+    {
+        asm("CALL  EZACIC05,((%[buf]),(%[nbyte])),VL"
+            : /* No output operands */
+            : /* Input operands */
+            [buf] "r"(buf),
+            [nbyte] "r"(&retcode)
+            : "0", "1", "15");
+    }
+
     return retcode;
 }
 

@@ -1,5 +1,6 @@
 *.a
 *.o
+*.pyc
 *.s
 pdpclib
 tmp.jcl_E

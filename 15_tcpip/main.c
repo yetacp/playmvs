@@ -2,15 +2,15 @@
 #include "ezasmi.h"
 
 #define MAX_SOCKET 8
-#define RESPONSE_SIZE 4096
+#define RESPONSE_SIZE 1024
 
 int main(int argc, char *argv[])
 {
     Sint32 errno, retcode;
     Uint32 dstaddr;
 
-    char response[RESPONSE_SIZE];
-    char *request = "GET /index.html HTTP/1.1\nHost: 127.0.0.1\n\n\n";
+    char response[RESPONSE_SIZE + 1];
+    char *request = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
 
     ez_begin();
 
@@ -52,12 +52,24 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    retcode = ez_recv(&desc, RESPONSE_SIZE, response, &errno);
-    if (retcode < 0)
+    Sint32 total_size = 0;
+    retcode = 1;
+    while (retcode > 0)
     {
-        printf("ez_recv error");
-        return -1;
+        memset(response, 0, RESPONSE_SIZE + 1);
+        retcode = ez_recv(&desc, RESPONSE_SIZE, response, &errno);
+        if (retcode < 0)
+        {
+            printf("ez_recv error");
+            return -1;
+        }
+        else
+        {
+            total_size += retcode;
+            printf("%s", response);
+        }
     }
+    printf("\nTotal size: %ld bytes\n", total_size);
 
     retcode = ez_close(&desc, &errno);
     if (retcode < 0)
