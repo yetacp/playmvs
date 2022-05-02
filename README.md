@@ -15,6 +15,15 @@ First and foremost, I would like to thank Volker Bandke (TK3), Juergen Winkelman
 ## About
 This is my playground to learn MVS3.8j/TK4- environment and to test C projects using Linux GCCMVS cross-compiler for MVS.
 
+## *Dependencies*
+
+- A MVS3.8j system: 
+    - [myMVS](https://github.com/yetacp/mymvs)
+    - [TK4-](https://wotho.ethz.ch/tk4-/). 
+- [GCC C cross-compiler for MVS](https://github.com/yetacp/gcc_mvs).
+
+Use [MVS sysgen](https://github.com/yetacp/mvs_sysgen) to generate a custom MVS3.8j.
+
 ## Projects in progress
 
 - Small programs to demonstrate C programming in MVS.
@@ -99,6 +108,11 @@ make
 ### **FTPD**
 - Authors: Jason Winter (JCC) and Juergen Winkelmann
 
+### **SXMaclib, EZASMI and MVSDDT**
+- Author: Shelby Lynne Beach
+- Source: http://www.mvsddt.altervista.org/
+
+
 ### [**TODO**] Other contributions 
 - I need to reference other authors and contributions.
 
@@ -109,11 +123,6 @@ An alternative to CICS for MVS3.8j.
 - Author: Mike Noel
 - Source: http://www.kicksfortso.com/
 - Permissive license to distribute code inside MVS? I don't think so.
-
-### **MVSDDT**: MVS Dynamic Debug Tool
-- Author: Shelby Lynne Beach
-- Source: http://www.mvsddt.altervista.org/
-- Does it works with Hercules 4? I don't know. I tried, but I couldn't to execute it.
 
 ### **MvsSplit**
 - Print spooler for MVS3.8j
