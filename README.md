@@ -44,39 +44,6 @@ Except Hercules, I downloaded the software below and I put the installers inside
 - Origin: https://github.com/MVS-sysgen/sysgen
 - Fork:   https://github.com/moshix/sysgen
 
-### **Hercules**
-- Author: Roger Bowler.
-- Mantainers: Jay Maynard, Jan Jaeger and others. 
-- https://sdl-hercules-390.github.io/html/hercinst.html
-
-Debian / Ubuntu / Mint:
-```bash
-sudo apt-get -y install git wget time
-sudo apt-get -y install build-essential cmake flex gawk m4 autoconf automake libtool-bin libltdl-dev
-sudo apt-get -y install libbz2-dev zlib1g-dev
-sudo apt-get -y install libcap2-bin
-sudo apt-get -y install libregina3-dev 
-```
-
-### **GCCMVS**
-- Linux C cross compiler for MVS
-- Author: Paul Edwards
-- Source: http://gccmvs.sourceforge.net/
-- Fork: https://github.com/mainframed/gccmvs 
-
-In Ubuntu/Debian install gcc-multilib.
-
-```bash
-sudo apt install gcc-multilib
-cd gccmvs
-make
-```
-
-### **PDPCLIB 4.0**
-- Public Domain Project C Library
-- http://pdos.sourceforge.net/
-- Author: Paul Edwards
-
 ### **RDRPrep**
 - Convert ASCII JCL files to EBCDIC
 - Author: James M. Morrison
@@ -111,7 +78,6 @@ make
 ### **SXMaclib, EZASMI and MVSDDT**
 - Author: Shelby Lynne Beach
 - Source: http://www.mvsddt.altervista.org/
-
 
 ### [**TODO**] Other contributions 
 - I need to reference other authors and contributions.
