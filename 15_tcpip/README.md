@@ -4,7 +4,7 @@ Author: Frank
 
 This is a C implementation/wrapper for EZASMI (TCP/IP).
 
-Project target is implement a REST API for C in MVS3.8j
+Project target is to implement a REST API for C in MVS3.8j
 
 ## Files
 
