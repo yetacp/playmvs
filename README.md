@@ -3,6 +3,12 @@
 | ![Logon screen](img/netsol.png "Logon screen") |
 | ------ |
 
+## Workflow
+
+| ![Workflow](img/workflow.png "Workflow") |
+| ------ |
+
+TODO...
 
 ## Acknowledgements
 ```
@@ -35,6 +41,7 @@ Use [MVS sysgen](https://github.com/yetacp/mvs_sysgen) to generate a custom MVS3
 - A database API using TCP/IP interface (EZASMI)
     - Create a client DB API for MVT Cobol, like Jay Moseley's VSAMIOS.
     - A simplified Python script will provide a socket server for database services.
+
 
 ## Components
 
