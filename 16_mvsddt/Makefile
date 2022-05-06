@@ -1,3 +1,3 @@
 include ../common.m4
 
-asm: 
+asm: main.s
