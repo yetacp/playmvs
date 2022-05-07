@@ -3,6 +3,8 @@
 ## How to...
 - Install MVSDDT client software
 - Install MVSDDT service in MVS Sysgen
+- Change SVC number to 241 from 233 in SYS2.MACLIB(DDTBRK) and SYSGEN.DDT.MACLIB(DDTBRK) 
+    - &DDTSVC# SETA  241     DDT SVC number
 
 ## Linux
 ```bash
