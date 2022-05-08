@@ -10,7 +10,6 @@ GET    /api/clients?p={PAGE}&s={SIZE} # client list, page {PAGE}, size {SIZE}
 PUT    /api/clients/{ID}              # update client with ID={ID}
 POST   /api/clients                   # create client and return ID
 DELETE /api/clients/{ID}              # delete client with ID={ID}
-GET    /api/clients/{ID}/orders       # orders for client with ID={ID}
 * ------------------------------------------------------------------------------
 * Employees
 GET    /api/employees                 # return employee list
@@ -24,6 +23,11 @@ GET    /api/jobs                      # job list
 GET    /api/jobs/{ID}                 # find job with ID={ID}
 * ------------------------------------------------------------------------------
 * Orders
+GET    /api/clients/{ID}/orders       # orders for client with ID={ID}
+GET    /api/orders/{ID}               # find order with ID={ID}
+PUT    /api/orders/{ID}               # update order with ID={ID}
+POST   /api/orders                    # create order and return ID
+DELETE /api/orders/{ID}               # delete order with ID={ID}
 * ------------------------------------------------------------------------------
 * Products
 GET    /api/products                  # return product list
