@@ -1,0 +1,2 @@
+/              - this file
+/api/clients   - client list

@@ -10,7 +10,7 @@ from bottle import route, run, debug, template, request, static_file, error, res
 def clients():
     conn = sqlite3.connect('db.sqlite3')
     cursor = conn.execute(
-        "SELECT firstname, lastname, email, phone FROM clients ORDER BY firstname, lastname")
+        "SELECT firstname,lastname, email, phone FROM clients")
     result = cursor.fetchall()
     conn.close()
     output = template("""%# Template to generate clients

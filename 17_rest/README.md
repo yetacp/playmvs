@@ -4,6 +4,8 @@ Author: Frank
 
 This is a C implementation/wrapper for EZASMI (TCP/IP).
 
+Project target is to implement a REST API for C in MVS3.8j
+
 ## Files
 
 - Run ./03_initdb_sqlite.py to init db.sqlite3 database.

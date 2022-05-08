@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "ezasmi.h"
 
-/************/
-/*  WORKING */
-/************/
+/*******************/
+/* WORKING - Alpha */
+/*******************/
 
 /* Initialize EZASMI */
 void ez_begin(void)
