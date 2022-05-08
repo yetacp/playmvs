@@ -1,8 +1,8 @@
-# C wrapper for EZASMI (TCP/IP)
+# REST API
+
+** NOT WORKING **
 
 Author: Frank
-
-This is a C implementation/wrapper for EZASMI (TCP/IP).
 
 Project target is to implement a REST API for C in MVS3.8j
 

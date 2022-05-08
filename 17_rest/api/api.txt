@@ -1,2 +1,41 @@
-/              - this file
-/api/clients   - client list
+* ------------------------------------------------------------------------------
+* REST API - version 0.1
+* ------------------------------------------------------------------------------
+GET /                                 # this file
+* ------------------------------------------------------------------------------
+* Clients
+GET    /api/clients                   # all client list
+GET    /api/clients/{ID}              # find client with ID={ID}
+GET    /api/clients?p={PAGE}&s={SIZE} # client list, page {PAGE}, size {SIZE}
+PUT    /api/clients/{ID}              # update client with ID={ID}
+POST   /api/clients                   # create client and return ID
+DELETE /api/clients/{ID}              # delete client with ID={ID}
+GET    /api/clients/{ID}/orders       # orders for client with ID={ID}
+* ------------------------------------------------------------------------------
+* Employees
+GET    /api/employees                 # return employee list
+GET    /api/employees/{ID}            # find employee with ID={ID}
+PUT    /api/employees/{ID}            # update employee with ID={ID}
+POST   /api/employees                 # create employee and return ID
+DELETE /api/employees/{ID}            # delete employee with ID={ID}
+* ------------------------------------------------------------------------------
+* Jobs
+GET    /api/jobs                      # job list
+GET    /api/jobs/{ID}                 # find job with ID={ID}
+* ------------------------------------------------------------------------------
+* Orders
+* ------------------------------------------------------------------------------
+* Products
+GET    /api/products                  # return product list
+GET    /api/products/{ID}             # find product with ID={ID}
+PUT    /api/products/{ID}             # update product with ID={ID}
+POST   /api/products                  # create product and return ID
+DELETE /api/products/{ID}             # delete product with ID={ID}
+* ------------------------------------------------------------------------------
+*Users
+GET    /api/users                     # user list
+POST   /api/logon
+POST   /api/logoff
+* ------------------------------------------------------------------------------
+* Roles
+GET    /api/roles                     # role list

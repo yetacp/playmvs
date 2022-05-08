@@ -34,7 +34,7 @@ conn.execute(
     "INSERT INTO users(login, password, idrole) VALUES('hmvs02','pass4u',2)")
 
 for id in range(1, MAX_JOB + 1):
-    sql = "INSERT INTO jobs(id, name) VALUES({:02},'{:15}')".format(
+    sql = "INSERT INTO jobs(id, name) VALUES({},'{}')".format(
         id, fake.unique.job())
     conn.execute(sql)
 
@@ -52,8 +52,8 @@ for id in range(1, MAX_EMPLOYEE + 1):
     job = fake.pyint(min_value=1, max_value=MAX_JOB)
     sql = """INSERT INTO employees(
                 id, firstname, lastname, birth, email, phone, address, zip, city, state, idjob) 
-             VALUES ({id:03}, '{firstname:12}', '{lastname:12}', '{birth:10}', '{email:20}', 
-                   '{phone:22}', '{address:42}', '{zip:5}', '{city:24}', '{state:15}', {job:02})""".format(
+             VALUES ({id}, '{firstname}', '{lastname}', '{birth}', '{email}', 
+                   '{phone}', '{address}', '{zip}', '{city}', '{state}', {job})""".format(
         id=id,
         firstname=firstname,
         lastname=lastname,
@@ -78,8 +78,8 @@ for id in range(1, MAX_CLIENT + 1):
     state = fake.state()
     sql = """INSERT INTO clients(id, firstname, lastname, email, phone,
                     address, zip, city, state)
-              VALUES ({id:05}, '{firstname:12}', '{lastname:12}', '{email:20}', 
-                      '{phone:22}', '{address:42}', '{zip:5}', '{city:24}', '{state:15}')""".format(
+              VALUES ({id}, '{firstname}', '{lastname}', '{email}', 
+                      '{phone}', '{address}', '{zip}', '{city}', '{state}')""".format(
         id=id,
         firstname=firstname,
         lastname=lastname,
@@ -96,7 +96,7 @@ for id in range(1, MAX_PRODUCT + 1):
     idproduct = fake.pyint(min_value=1, max_value=MAX_PRODUCT)
     n_me = fake.unique.text(max_nb_chars=20)[:-1]
     quantity = fake.pyint(min_value=1, max_value=1000)
-    sql = "INSERT INTO products(id, name, quantity) VALUES ({id:03}, '{n_me:20}', {quantity:05})".format(
+    sql = "INSERT INTO products(id, name, quantity) VALUES ({id}, '{n_me}', {quantity})".format(
         id=id,
         n_me=n_me,
         quantity=quantity
@@ -110,7 +110,7 @@ for id in range(1, MAX_ORDER + 1):
     data = fake.date_of_birth(
         minimum_age=0, maximum_age=7).strftime("%Y-%m-%d")
     sql = """INSERT INTO orders(id, data, idclient, idproduct, quantity) 
-             VALUES ({id:05}, '{data:10}', {idclient:05}, {idproduct:04}, {quantity:05})""".format(
+             VALUES ({id}, '{data}', {idclient}, {idproduct}, {quantity})""".format(
         id=id,
         idclient=idclient,
         idproduct=idproduct,
