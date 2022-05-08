@@ -11,3 +11,7 @@ This is a C implementation/wrapper for EZASMI (TCP/IP).
 - Run 'make' to install program into MVS.
 - Run 'make execute' to execute :)
 - See response in prt00e.txt
+
+## API
+- http://localhost:3000/ - API description
+- http://localhost:3000/api/clients - client list ordered by first name and last name
