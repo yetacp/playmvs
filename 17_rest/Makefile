@@ -4,3 +4,6 @@ CFLAGS  = -S -O0
 
 asm: ezasmi.s main.s
 
+test:
+	./05_test.sh
+

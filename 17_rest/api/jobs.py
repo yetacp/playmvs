@@ -10,6 +10,7 @@ FROM jobs
 ORDER BY name"""
 
 GET_JOBS_TPL = """%# List jobs
+id,name
 %for row in rows:
 {{row[0]}};{{row[1]}}
 %end    
@@ -18,7 +19,7 @@ GET_JOBS_TPL = """%# List jobs
 @route('/api/jobs', method='GET')
 def find_jobs():
     response.content_type = "text/plain"
-    output = template(GET_JOBS_TPL, rows=select(GET_JOBS_SQL))
+    output = template(GET_JOBS_TPL, rows=execute(GET_JOBS_SQL))
     return output
 
 # -------------------------------------------------------------------------------------------
@@ -30,6 +31,7 @@ FROM jobs
 WHERE id={id}"""
 
 GET_JOBS_ID_TPL = """%# Job by ID
+id;name
 %for row in rows:
 {{row[0]}};{{row[1]}}
 %end    
@@ -39,5 +41,5 @@ GET_JOBS_ID_TPL = """%# Job by ID
 def find_job_by_id(id):
     response.content_type = "text/plain"
     sql = GET_JOBS_ID_SQL.format(id=id)
-    output = template(GET_JOBS_ID_TPL, rows=select(sql))
+    output = template(GET_JOBS_ID_TPL, rows=execute(sql))
     return output

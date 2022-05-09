@@ -31,6 +31,6 @@ execute:
 	@echo "execute..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 
-.PHONY: clean install
+.PHONY: clean install test
 clean:
 	rm -f *.jcl_E *.s
