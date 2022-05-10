@@ -19,5 +19,26 @@ Project target is to implement a REST API for C in MVS3.8j
 - Navigate to http://localhost:3000/ to see API
 - Run 'make test' to test REST API. Results in test folder.
 - Run 'make' to install program into MVS.
-- Run 'make execute' to execute program in MVS :)
-- See response in prt00e.txt
+
+
+## Screens (under construction)
+
+### Main menu
+
+| ![Main menu](screens/frm_main.ans.png "Main menu") |
+| ------ |
+
+### Client list
+
+| ![Client list](screens/frm_client_list.ans.png "Client list") |
+| ------ |
+
+### New client
+
+| ![New client](screens/frm_client_new.ans.png "New client") |
+| ------ |
+
+### Edit client
+
+| ![Edit client](screens/frm_client_edit.ans.png "Edit client") |
+| ------ |
