@@ -23,7 +23,7 @@ Project target is to implement a REST API for C in MVS3.8j
 
 ## Screens
 
-Under construction ...<img src="screens/under-construction.gif" width="50"/>
+Under construction ...<img src="screens/under-construction.gif" width="50"/> (old animated gif :)
 
 ### Main menu
 
