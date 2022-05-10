@@ -1,25 +1,30 @@
 #!/bin/bash
 
+TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" # Fake authentication token
+
 send_GET(){
-  curl -s localhost:3000$1 > test_$2.csv
+  curl -X GET     -s -H "Authorization: Bearer $TOKEN" localhost:3000$1 > test_$2.csv
   echo "$2 GET    $1 => `cat test_$2.csv | wc -l` line(s) # $3"
 }
 
 send_DELETE(){
-  curl -X DELETE -s localhost:3000$1 > test_$2.csv
+  curl -X DELETE  -s -H "Authorization: Bearer $TOKEN" localhost:3000$1 > test_$2.csv
   echo "$2 DELETE $1 => `cat test_$2.csv` # $3"  
 }
 
 send_PUT(){
-  curl -X PUT -s localhost:3000$1 -d "$3" > test_$2.csv
+  curl -X PUT     -s -H "Authorization: Bearer $TOKEN" localhost:3000$1 -d "$3" > test_$2.csv
   echo "$2 PUT    $1 => `cat test_$2.csv` # $4" 
 }
 
 send_POST(){
-  curl -X POST -s localhost:3000$1 -d "$3" > test_$2.csv
+  curl -X POST    -s -H "Authorization: Bearer $TOKEN" localhost:3000$1 -d "$3" > test_$2.csv
   echo "$2 POST   $1 => `cat test_$2.csv` # $4" 
 }
 
+send_token(){
+  curl -X GET  localhost:3000$1
+}
 
 clear
 

@@ -5,6 +5,8 @@ from api.common import *
 @route('/api/clients', method='GET')
 def find_clients():
     response.content_type = "text/csv"
+    
+    # print(request.headers['Authorization'])
 
     output = template("""id;firstname;lastname;email;phone
 %for row in rows:
