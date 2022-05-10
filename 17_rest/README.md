@@ -21,7 +21,9 @@ Project target is to implement a REST API for C in MVS3.8j
 - Run 'make' to install program into MVS.
 
 
-## Screens (under construction)
+## Screens
+
+Under construction ...<img src="screens/under-construction.gif" width="50"/>
 
 ### Main menu
 
