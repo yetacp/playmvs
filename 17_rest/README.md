@@ -9,8 +9,11 @@ Project target is to implement a REST API for C in MVS3.8j
 1. Create Python backend (70%)
 2. Create MVS client (0%)
 
-## Files
+## Warning
+- This project is not safety for production. It is vulnerable to SQL Injection.
 
+## Files
+- Install Python package 'Faker': $ pip3 install Faker
 - Run ./03_initdb_sqlite.py to init db.sqlite3 database.
 - Run ./04_start_server.py to start REST API server.
 - Navigate to http://localhost:3000/ to see API

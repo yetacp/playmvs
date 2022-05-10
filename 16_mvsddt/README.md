@@ -8,6 +8,7 @@
 
 ## Linux
 ```bash
+$ pip3 install Faker
 $ make # install program in MVS via sockdev
 $ make execute # execute adder with MVSDDT
 ```
