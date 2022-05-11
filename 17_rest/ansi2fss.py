@@ -4,7 +4,6 @@ import sys
 import re
 import os
 
-
 ANSI_DICT = {
     '0': 'REMOVE ATTRIBUTES',
     '1': 'BOLD',
@@ -36,14 +35,16 @@ def main():
     variable = False
     variable_name = ''
 
-    dirname, fname = os.path.split(sys.argv[1])
+    dirname, fname = os.path.split(sys.argv[2])
     fname_no_ext = os.path.splitext(fname)[0]
 
     h_fname = "{}.h".format(fname_no_ext)
     c_full_fname = "{}.c".format(os.path.join(dirname, fname_no_ext))
     h_full_fname = "{}.h".format(os.path.join(dirname, fname_no_ext))
 
-    with open(sys.argv[1], "r", encoding='latin-1') as f:
+    function_name = sys.argv[1]
+
+    with open(sys.argv[2], "r", encoding='latin-1') as f:
         with open(c_full_fname, 'w') as c_file:
 
             content = f.read()
@@ -57,11 +58,13 @@ def main():
 
             c_file.write("""/* DO NOT EDIT {c_full_fname} - generated on: {date} */
 #include "fss.h"
-#include "{h_fname}"
-
-void show() {{
+#include "aux.h"
+#include "{h_fname}"\n
+void {function_name}(void) {{
 """.format(date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                c_full_fname=c_full_fname, h_fname=h_fname))
+                c_full_fname=c_full_fname,
+                h_fname=h_fname,
+                function_name=function_name))
 
             for byte in content:
                 if escaped:
@@ -88,7 +91,6 @@ void show() {{
                         if word_end:
                             word_end = False
                             if variable:
-                                print("Initial = \'{}\'".format(string))
                                 symbol_count = symbol_count + 1
                                 variable_name = "f{count:05d}".format(
                                     count=symbol_count)
@@ -135,10 +137,12 @@ void show() {{
 
         with open(h_full_fname, 'w') as h_file:
             h_file.write("""#ifndef __{fname}_H__
-#define __{fname}_H__\n\n""".format(fname=fname_no_ext.upper()))
+#define __{fname}_H__\n
+extern void {function_name}(void);\n""".format(fname=fname_no_ext.upper(),
+                                               function_name=function_name))
             for k, v in symbols.items():
-                h_file.write('#define {k} "{k}" /* {v} */\n'.format(k=k, v=v))
-            h_file.write("\n#endif")
+                h_file.write('\n#define {k} "{k}" /* {v} */'.format(k=k, v=v))
+            h_file.write("\n#endif\n")
 
 
 def writeline(output, variable_name, process_string, current_color, bg_color, s_x=0, s_y=0):
@@ -193,4 +197,11 @@ def writeline(output, variable_name, process_string, current_color, bg_color, s_
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 3:
+        main()
+    else:
+        print("""+------------------------------------------------------------+
+| ANSI to C Full Screen Interface FSS                        |
+| Use https://github.com/blocktronics/moebius to draw screen |
+| Usage: ./ansi2fss.py function_name /path/to/screen.ans     |
++------------------------------------------------------------+""")
