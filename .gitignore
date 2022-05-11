@@ -2,7 +2,9 @@
 *.o
 *.pyc
 *.s
-pdpclib
-tmp.jcl_E
+17_rest/screens/*.ans.c
+17_rest/screens/*.ans.h
 17_rest/test/*.csv
 __pycache__
+pdpclib
+tmp.jcl_E
