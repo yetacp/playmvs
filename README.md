@@ -19,7 +19,7 @@ Isaac Newton.
 - First and foremost, I would like to thank [Volker Bandke](https://bsp-gmbh.pocnet.net/), [Juergen Winkelmann](https://wotho.ethz.ch/tk4-/), [Jay Moseley](http://www.jaymoseley.com/) and [Moshix](https://www.youtube.com/c/moshix/videos).
 
 ## About
-- This is my playground to learn MVS3.8j/TK4- environment and to test C projects using Linux GCCMVS cross-compiler for MVS.
+- This is my playground to learn MVS3.8j/TK4- environment and to test C projects using Linux [GCCMVS](https://github.com/yetacp/gcc_mvs) cross-compiler for MVS.
 
 ## *Dependencies*
 
@@ -46,7 +46,7 @@ Isaac Newton.
 
 - This folder contains some programs to test C programming in MVS.
  
-- These programs are compiled inside **Linux** using GCCMVS to generate source code in assembly.
+- These programs are compiled inside **Linux** using [GCCMVS](https://github.com/yetacp/gcc_mvs) to generate source code in assembly.
 
 - I use jobs to send these source code to MVS through Hercules sockdevs (3505 card readers).
 
