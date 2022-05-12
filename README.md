@@ -83,7 +83,7 @@ Isaac Newton.
 - Author: myself
 - Only KSKDS works
 
-### [08_fss](08_fss_)
+### [08_fss](08_fss)
 
 - Full screen MVS programs using amazing [Tommy Sprinkle's "C Full Screen Service API"](http://tommysprinkle.com/mvs/fss/using.html).
 
