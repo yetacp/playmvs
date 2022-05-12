@@ -1,13 +1,7 @@
 #ifndef __EZASMI_H__
 #define __EZASMI_H__
 
-typedef unsigned char Uint8;
-typedef unsigned short Uint16;
-typedef unsigned int Uint32;
-
-typedef char Sint8;
-typedef short Sint16;
-typedef int Sint32;
+#include "../08_fss/types.h"
 
 typedef struct Socket
 {

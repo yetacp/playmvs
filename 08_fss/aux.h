@@ -1,8 +1,7 @@
 #ifndef __AUX_H__
 #define __AUX_H__
-typedef char Sint8;
-typedef short Sint16;
-typedef int Sint32;
+
+#include "types.h"
 
 typedef struct TextRow
 {

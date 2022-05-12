@@ -13,7 +13,7 @@ def find_clients():
 {{row[0]}};{{row[1]}};{{row[2]}};{{row[3]}};{{row[4]}}
 %end    
 """, rows=execute("""SELECT id, firstname, lastname, email, phone 
-                     FROM clients ORDER BY firstname, lastname"""))
+                     FROM clients ORDER BY firstname, lastname LIMIT 14"""))
     return output
 # -------------------------------------------------------------------------------------------
 @route('/api/clients/<id:int>', method='GET')

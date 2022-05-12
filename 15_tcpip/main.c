@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "ezasmi.h"
 
-#define MAX_SOCKET 8
 #define RESPONSE_SIZE 1024
 
 int main(int argc, char *argv[])

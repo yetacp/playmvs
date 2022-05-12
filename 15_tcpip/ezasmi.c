@@ -9,7 +9,10 @@
 /* Initialize EZASMI */
 void ez_begin(void)
 {
+#ifdef _DEBUG
     asm("WTO   'INITAPI'");
+#endif
+
     asm("XC EZASMTIE(TIELENTH),EZASMTIE  clear EZASMI storage\n\t "
         "LA    R15,EZASMTIE              R15 = A(Task storage area)\n\t"
         "LA    R1,T#PARMS-EZASMTIE(R15)  R1 = A(EZASOH03 parm list)\n\t"
@@ -22,7 +25,10 @@ void ez_begin(void)
 /* Terminate EZASMI */
 void ez_end(void)
 {
+#ifdef _DEBUG
     asm("WTO    'TERMAPI'");
+#endif
+
     asm("LA    R15,EZASMTIE             R15 = A(Task storage area)\n\t"
         "LA    R1,T#PARMS-EZASMTIE(R15) R1 = A(EZASOH03 parm list)\n\t"
         "LA    R0,=C'TERM'              R0 = A(TERM function ID)\n\t"
@@ -39,7 +45,10 @@ Sint32 ez_socket(Sint32 *errno)
     // https://www.ibm.com/docs/en/zvse/6.2?topic=SSB27H_6.2.0/fa2ti_ezasmi_socket.html
     Sint32 retcode = 0;
 
+#ifdef _DEBUG
     asm("WTO    'SOCKET'");
+#endif
+
     asm("EZASMI TYPE=SOCKET,AF='INET',SOCTYPE='STREAM',                +\n"
         "\t      ERRNO=(%[errno]),RETCODE=(%[retcode])"
         : /* No output operands */
@@ -56,7 +65,10 @@ Sint32 ez_conn(Sint16 *desc, Socket *socket, Sint32 *errno)
     // https://www.ibm.com/docs/en/zos/2.1.0?topic=programs-connect
     Sint32 retcode = 0;
 
+#ifdef _DEBUG
     asm("WTO    'CONNECT'");
+#endif
+
     asm("EZASMI TYPE=CONNECT,                                          +\n"
         "\t      S=(%[desc]),NAME=(%[socket]),ERRNO=(%[errno]),RETCODE=(%[retcode])"
         : /* No output operands */
@@ -74,7 +86,10 @@ Sint32 ez_close(Sint16 *desc, Sint32 *errno)
 {
     Sint32 retcode = 0;
 
+#ifdef _DEBUG
     asm("WTO    'CLOSE'");
+#endif
+
     asm("EZASMI TYPE=CLOSE,S=(%[desc]),ERRNO=(%[errno]),RETCODE=(%[retcode])"
         : /* No output operands */
         : /* Input operands */
@@ -91,7 +106,9 @@ Sint32 ez_send(Sint16 *desc, Uint32 nbyte, void *buf, Sint32 *errno)
     // https://www.ibm.com/docs/en/zos/2.1.0?topic=programs-send
     Sint32 retcode = 0;
 
+#ifdef _DEBUG
     asm("WTO    'SEND'");
+#endif
 
     /* Convert to ASCII*/
     asm("CALL  EZACIC04,((%[buf]),(%[nbyte])),VL"
@@ -119,7 +136,10 @@ Sint32 ez_recv(Sint16 *desc, Uint32 nbyte, void *buf, Sint32 *errno)
 {
     Sint32 retcode = 0;
 
+#ifdef _DEBUG
     asm("WTO    'RECV'");
+#endif
+
     asm("EZASMI TYPE=RECV,                                             +\n"
         "\t      S=(%[desc]),NBYTE=(%[nbyte]),BUF=(%[buf]),ERRNO=(%[errno]),RETCODE=(%[retcode])"
         : /* No output operands */
@@ -151,7 +171,10 @@ Sint32 ez_pton(char *srcaddr, Uint32 *dstaddr, Sint32 *errno)
     Sint32 retcode = 0;
     Sint16 srclen = strlen(srcaddr);
 
+#ifdef _DEBUG
     asm("WTO   'PTON'");
+#endif
+
     asm("EZASMI TYPE=PTON,AF='INET',                                   +\n\t"
         "      SRCADDR=(R%[srcaddr]),SRCLEN=(R%[srclen]),                               +\n\t"
         "      DSTADDR=(R%[dstaddr]),ERRNO=(R%[errno]),RETCODE=(R%[retcode])"
@@ -172,7 +195,10 @@ Sint32 ez_ntop(Uint32 *srcaddr, char *dstaddr, Sint32 *errno)
     Sint32 retcode = 0;
     Sint16 addrlen = strlen(srcaddr);
 
+#ifdef _DEBUG
     asm("WTO    'NTOP'");
+#endif
+
     asm("EZASMI TYPE=NTOP,AF='INET',                                   +\n"
         "\t      SRCADDR=(%[srcaddr]),DSTADDR=(%[dstaddr]),DSTLEN=(%[addrlen]),ERRNO=(%[errno]),RETCODE=(%[retcode])"
         : /* No output operands */
@@ -191,7 +217,10 @@ Sint32 ez_getha(char *hostaddr, char *hostent, Sint32 *errno)
 {
     Sint32 retcode = 0;
 
+#ifdef _DEBUG
     asm("WTO    'GETHOSTBYADDR'");
+#endif
+
     asm("EZASMI TYPE=GETHOSTBYADDR,                                    +\n"
         "\t      HOSTADR=(%[hostaddr]),HOSTENT=(%[hostent]),RETCODE=(%[retcode])"
         : /* No output operands */
@@ -209,7 +238,10 @@ Sint32 ez_gethn(char *name, char *hostent, Sint32 *errno)
     Sint32 retcode = 0;
     Sint16 namelen = strlen(name);
 
+#ifdef _DEBUG
     asm("WTO    'GETHOSTBYNAME'");
+#endif
+
     asm("EZASMI TYPE=GETHOSTBYNAME,                                    +\n"
         "\t      NAME=(%[name]),NAMELEN=(%[namelen]),HOSTENT=(%[hostent]),RETCODE=(%[retcode])"
         : /* No output operands */
@@ -226,7 +258,10 @@ Sint32 ez_getpn(Sint16 *desc, Socket *socket, Sint32 *errno)
 {
     Sint32 retcode = 0;
 
+#ifdef _DEBUG
     asm("WTO    'GETPEERNAME'");
+#endif
+
     asm("EZASMI TYPE=GETPEERNAME,                                      +\n"
         "\t      S=(%[desc]),NAME=(%[socket]),ERRNO=(%[errno]),RETCODE=(%[retcode])"
         : /* No output operands */

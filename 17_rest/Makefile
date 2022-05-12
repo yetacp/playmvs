@@ -2,8 +2,7 @@ include ../common.m4
 
 CFLAGS  = -S -O0
 
-asm: ezasmi.s \
-	main.s \
+asm: main.s \
 	screens/frm_main.s \
 	screens/frm_client_list.s \
 	screens/frm_client_new.s \
@@ -18,3 +17,6 @@ screens:
 test:
 	./05_test.sh
 
+deps:
+	cd ../08_fss && make
+	cd ../15_tcpip && make
