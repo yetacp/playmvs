@@ -16,10 +16,10 @@ If I have seen a little further it is by standing on the shoulders of Giants.
 Isaac Newton.
 ```
 
-First and foremost, I would like to thank Volker Bandke (TK3), Juergen Winkelmann (https://wotho.ethz.ch/tk4-/), Jay Moseley (http://www.jaymoseley.com/) and Moshix (https://www.youtube.com/c/moshix/videos).
+- First and foremost, I would like to thank Volker Bandke (TK3), Juergen Winkelmann (https://wotho.ethz.ch/tk4-/), Jay Moseley (http://www.jaymoseley.com/) and Moshix (https://www.youtube.com/c/moshix/videos).
 
 ## About
-This is my playground to learn MVS3.8j/TK4- environment and to test C projects using Linux GCCMVS cross-compiler for MVS.
+- This is my playground to learn MVS3.8j/TK4- environment and to test C projects using Linux GCCMVS cross-compiler for MVS.
 
 ## *Dependencies*
 
@@ -28,7 +28,7 @@ This is my playground to learn MVS3.8j/TK4- environment and to test C projects u
     - [TK4-](https://wotho.ethz.ch/tk4-/). 
 - [GCC C cross-compiler for MVS](https://github.com/yetacp/gcc_mvs).
 
-Use [MVS sysgen](https://github.com/yetacp/mvs_sysgen) to generate a custom MVS3.8j.
+- Use [MVS sysgen](https://github.com/yetacp/mvs_sysgen) to generate a custom MVS3.8j.
 
 ## Projects in progress
 
@@ -42,70 +42,71 @@ Use [MVS sysgen](https://github.com/yetacp/mvs_sysgen) to generate a custom MVS3
     - Create a client DB API for MVT Cobol, like Jay Moseley's VSAMIOS.
     - A simplified Python script will provide a socket server for database services.
 
+## Playground projects
 
-## Components
+- This folder contains some programs to test C programming in MVS.
+ 
+- These programs are compiled inside **Linux** using GCCMVS to generate source code in assembly.
 
-Except Hercules, I downloaded the software below and I put the installers inside the repository to allow offline installation.
+- I use jobs to send these source code to MVS through Hercules sockdevs (3505 card readers).
 
-### **Automated MVS3.8j Sysgen** from Jay Moseley site
-- Origin: https://github.com/MVS-sysgen/sysgen
-- Fork:   https://github.com/moshix/sysgen
+- Assembling (IFOX00) and linkediting (IEWL) are executed inside **MVS**.
 
-### **RDRPrep**
-- Convert ASCII JCL files to EBCDIC
-- Author: James M. Morrison
-- Source: https://github.com/mainframed/rdrprep
+### 01_adder
 
-### **FSS, FSI and Scruples**
-- FSS: C Full Screen API
-- FSI: Assembly Full Screen API
-- Scruples: Panel to FSS Compiler
-- Author: Tommy Sprinkle
-- Source: http://tommysprinkle.com/mvs
+- C program to receive 2 numbers from JCL and add them.
 
-### **PrtSpool**
-- Print spooler for MVS3.8j
-- Author: Tim Pinkawa
-- Source: http://www.timpinkawa.net/hercules
+### 02_multiple (compile and link multiple C programs)
 
-### **BREXX: a MVS 3.8j REXX**
-- https://github.com/mvslovers/brexx370
+- I cross-compile two C programs in **Linux** to assembly source code.
+- Generated assembly code is compiled using IFOX00 in **MVS**.
+- After, modules are linked using IEWL in **MVS**.
 
-### **RPF (Rob's Programming Facility) 1.92**
-- Author: Rob Prins
-- Source: http://www.prince-webdesign.nl/rpf
+### 03_fileio
 
-### **RFE (Review Front End) 50.3**
-- Author: Greg Price - Prycroft Six
-- Source: http://www.prycroft6.com.au/REVIEW/index.html
+- C program to read and print a dataset declared in DD JCL.
 
-### **FTPD**
-- Authors: Jason Winter (JCC) and Juergen Winkelmann
+### 04_vm
 
-### **SXMaclib, EZASMI and MVSDDT**
-- Author: Shelby Lynne Beach
-- Source: http://www.mvsddt.altervista.org/
+- A tiny toy virtual machine written in C.
+- A Fibonnaci algorithm is hard coded in vmcode.c file.
 
-### [**TODO**] Other contributions 
-- I need to reference other authors and contributions.
+### 05_netsol
+- How to replace logon screen. I am using [ANSI2EBCDIC project](https://github.com/yetacp/ANSi2EBCDiC).
 
-## Someday, I am going to install
+### 06_database
+- A small Python+SQLite database providing a REST API.
 
-### **Kicks**: A transaction processing system for CMS & TSO
-An alternative to CICS for MVS3.8j.
-- Author: Mike Noel
-- Source: http://www.kicksfortso.com/
-- Permissive license to distribute code inside MVS? I don't think so.
+### 07_vsam 
 
-### **MvsSplit**
-- Print spooler for MVS3.8j
-- Source: https://github.com/dasta400/mvssplitspl
-- Fork: https://github.com/moshix/mvssplitspl
+- A partial C implementation of VSAM API.
+- Author: myself
+- Only KSKDS works
 
-### **See other interesting MVS projects**
-- https://github.com/mainframed/tk4
-- https://github.com/mainframed/DOGECICS
-- https://github.com/HackerSmacker/Lua370
+### 08_fss (08-13)
 
-### Misc
-- https://manytools.org/hacker-tools/ascii-banner/
+- Full screen MVS programs using amazing Tommy Sprinkle's "C Full Screen API" .
+
+- Source: http://tommysprinkle.com/mvs/fss/using.html
+- 09_hello - Another ye olde Hello World.
+- 10_hello - Yet another ye olde Hello World with colors.
+- 11_login - Read a username and password.
+- 12_panel - Use Scruples editor to create a complex panel.
+- 13_menu  - A menu example using a panel.
+
+### 14_lua (It is not working)
+- Yet another not working MVS port of Lua 5.4.
+- You can find a [working port here](https://github.com/HackerSmacker/Lua370).
+
+### 15_tcpip
+- A C-wrapper for EZASMI API and a TCP/IP sample
+
+### 16_mvsddt
+- Using MVSDDT to debug a assembly program.
+
+### 17_rest
+- Frontend: a small program with screens using FSS and a TCP/IP client using EZASMI.
+- Backend: a REST API server using a SQLite database to provide persistence.
+
+| ![Client list](17_rest/screens/frm_client_list.ans.png "Client list") |
+| ------ |
