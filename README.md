@@ -36,11 +36,11 @@ Isaac Newton.
 - A C implementation of VSAM API.
 - A web panel editor for FSS API (C Full Screen Interface).
 - A LUA port for MVS.
+- A database API using TCP/IP interface (EZASMI). A simplified Python script will provide a socket server for database services.
 
-## Project Ideas 
-- A database API using TCP/IP interface (EZASMI)
-    - Create a client DB API for MVT Cobol, like Jay Moseley's VSAMIOS.
-    - A simplified Python script will provide a socket server for database services.
+## Ideas
+- Create a client DB API for MVT Cobol, like Jay Moseley's VSAMIOS.
+- A decimal math library similar to COBOL for C.
 
 ## Playground projects
 
