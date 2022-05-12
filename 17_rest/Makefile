@@ -11,9 +11,9 @@ asm: ezasmi.s \
 
 screens:
 	./ansi2fss.py smain screens/frm_main.ans
-	./ansi2fss.py sclinew screens/frm_client_new.ans
-	./ansi2fss.py sclilist screens/frm_client_list.ans
-	./ansi2fss.py scliedit screens/frm_client_edit.ans
+	./ansi2fss.py scnew screens/frm_client_new.ans
+	./ansi2fss.py sclist screens/frm_client_list.ans
+	./ansi2fss.py scedit screens/frm_client_edit.ans
 
 test:
 	./05_test.sh
