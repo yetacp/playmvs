@@ -54,7 +54,7 @@ Isaac Newton.
 
 ### [01_adder](01_adder)
 
-- C program to receive 2 numbers from JCL and add them.
+- C program to receive 2 numbers from JCL (and/or TSO) and add them.
 
 ### [02_multiple](02_multiple)
 
