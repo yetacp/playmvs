@@ -1,6 +1,7 @@
 # REST API
 
-** NOT WORKING **
+** Partially working **
+
 Author: Frank
 
 Project target is to implement a REST API for C in MVS3.8j
