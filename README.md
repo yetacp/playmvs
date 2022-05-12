@@ -1,4 +1,4 @@
-# My MVS Playground
+# My MVS Playground (Cookbook)
 
 | ![Logon screen](img/netsol.png "Logon screen") |
 | ------ |
