@@ -16,7 +16,7 @@ If I have seen a little further it is by standing on the shoulders of Giants.
 Isaac Newton.
 ```
 
-- First and foremost, I would like to thank Volker Bandke (TK3), [Juergen Winkelmann](https://wotho.ethz.ch/tk4-/), [Jay Moseley](http://www.jaymoseley.com/) and [Moshix](https://www.youtube.com/c/moshix/videos).
+- First and foremost, I would like to thank [Volker Bandke](https://bsp-gmbh.pocnet.net/), [Juergen Winkelmann](https://wotho.ethz.ch/tk4-/), [Jay Moseley](http://www.jaymoseley.com/) and [Moshix](https://www.youtube.com/c/moshix/videos).
 
 ## About
 - This is my playground to learn MVS3.8j/TK4- environment and to test C projects using Linux GCCMVS cross-compiler for MVS.
