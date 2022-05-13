@@ -1,17 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
 #include "../08_fss/fss.h"
 #include "../08_fss/aux.h"
 #include "../08_fss/screen.h"
 #include "../15_tcpip/ezasmi.h"
+
 #include "screens/frm_main.h"
 #include "screens/frm_client_list.h"
 #include "screens/frm_client_new.h"
 #include "screens/frm_client_edit.h"
+
 #include "main.h"
 
-#define RESPONSE_SIZE 1024
+#define RESPONSE_SIZE 2048
 
 typedef int Boolean;
 #define true (1)
@@ -96,13 +100,23 @@ static Sint32 sendmessage(char *ip, int port, char *buffer, int size)
     return received;
 }
 
+static void getDate(char *str)
+{
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    sprintf(str, "%4d-%02d-%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
+}
+
 /* ================================================================== */
 /* Main screen */
 /* ================================================================== */
 static void main_OnInit(void)
 {
     smain();
-    fssSetField(FSMAIN_00001, "01/02/1900");
+
+    char d[11];
+    getDate(d);
+    fssSetField(FSMAIN_00001, d);
     fssSetField(FSMAIN_00002, " ");
 }
 
@@ -148,6 +162,10 @@ static void clientList_OnInit(void)
 {
     sclist();
 
+    char d[11];
+    getDate(d);
+    fssSetField(FSCLIST_00001, d);
+
     char *request = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
     char buffer[RESPONSE_SIZE + 1];
 
@@ -181,7 +199,7 @@ static void clientList_OnInit(void)
                 }
                 if (last_char == '\n')
                 {
-                    afterEmptyLine = true;                    
+                    afterEmptyLine = true;
                 }
                 last_char = '\n';
             }
@@ -225,6 +243,9 @@ static int clientList_OnSubmit(int aid, int *screen)
 static void clientNew_OnInit(void)
 {
     scnew();
+    char d[11];
+    getDate(d);
+    fssSetField(FSCNEW_00001, d);
 }
 
 static void clientNew_OnSetCursor(void)
@@ -248,6 +269,10 @@ static int clientNew_OnSubmit(int aid, int *screen)
 static void clientEdit_OnInit(void)
 {
     scedit();
+
+    char d[11];
+    getDate(d);
+    fssSetField(FSCEDIT_00001, d);
 }
 
 static void clientEdit_OnSetCursor(void)
