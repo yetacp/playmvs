@@ -52,7 +52,6 @@ static const luaL_Reg loadedlibs[] = {
 LUALIB_API void luaL_openlibs(lua_State *L)
 {
   const luaL_Reg *lib;
-  asm("WTO   'Begin luaL_openlibs'");
   /* "require" functions from 'loadedlibs' and set results to global table */
   for (lib = loadedlibs; lib->func; lib++)
   {

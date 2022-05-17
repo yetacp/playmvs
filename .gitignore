@@ -2,6 +2,8 @@
 *.o
 *.pyc
 *.s
+14_lua/jcl/*.done
+14_lua/jcl/*.jcl
 17_rest/screens/*.c
 17_rest/screens/*.h
 17_rest/test/*.csv

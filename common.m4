@@ -13,20 +13,20 @@ CFLAGS  = -S -O3
 
 INCLUDES = -I $(GCCMVS)/pdpclib
 
-all: clean asm install
+all: asm install
 
 %.s: %.c
 	@echo "Compiling $(notdir $<)"
 	$(CC) $(CFLAGS) $(INCLUDES) $<
 
 install:
-	@echo "Preparing EBCDIC..."
+	@echo "Installing application..."
 	@$(RDRPREP) 01_install.jcl tmp.jcl_E
 	@echo "Installing files..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 
 execute:
-	@echo "Preparing EBCDIC..."
+	@echo "Executing application..."
 	@$(RDRPREP) 02_execute.jcl tmp.jcl_E
 	@echo "execute..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E

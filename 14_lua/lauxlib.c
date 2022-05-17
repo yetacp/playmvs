@@ -1002,7 +1002,6 @@ LUALIB_API int luaL_getsubtable(lua_State *L, int idx, const char *fname)
 LUALIB_API void luaL_requiref(lua_State *L, const char *modname,
                               lua_CFunction openf, int glb)
 {
-  asm("WTO   'Begin luaL_requiref'");
   luaL_getsubtable(L, LUA_REGISTRYINDEX, LUA_LOADED_TABLE);
   lua_getfield(L, -1, modname); /* LOADED[modname] */
   if (!lua_toboolean(L, -1))
