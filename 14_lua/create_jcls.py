@@ -1,18 +1,18 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-list = ["lapi", "lauxlib", "lbaselib", "lcode", "lcorolib", "lctype", \
-     "ldebug", "ldo", "ldump", "lfunc", "lgc", "linit", "liolib", "llex", "lmathlib", \
-     "lmem", "loadlib", "lobject", "lopcodes", "loslib", "lparser", "lstate", \
-     "lstring", "lstrlib", "ltable", "ltablib", "ltm", "lundump", \
-     "lvm", "lzio", "lua"]
+list = ["lapi", "lauxlib", "lbaselib", "lcode", "lcorolib", "lctype",
+        "ldebug", "ldo", "ldump", "lfunc", "lgc", "linit", "liolib", "llex", "lmathlib",
+        "lmem", "loadlib", "lobject", "lopcodes", "loslib", "lparser", "lstate",
+        "lstring", "lstrlib", "ltable", "ltablib", "ltm", "lundump",
+        "lvm", "lzio", "lua"]
 
 with open("jcldep.m4", "w") as jf:
-  count = 0
-  for file in list:
-      count = count + 1
-      print("{count} {file}".format(count=count, file=file))
-      jf.write("""jcl/{count:02d}.done: {f1}.s
+    count = 0
+    for file in list:
+        count = count + 1
+        print("{count} {file}".format(count=count, file=file))
+        jf.write("""jcl/{count:02d}.done: {f1}.s
 \t@echo "Preparing EBCDIC for {f1}..."
 \t@$(RDRPREP) jcl/{count:02d}.jcl tmp.jcl_E
 \t@echo "Installing {f1}..."
@@ -21,8 +21,8 @@ with open("jcldep.m4", "w") as jf:
 \tsleep 2
 
 """.format(count=count, f1=file))
-      with open("jcl/{count:02d}.jcl".format(count=count), "w") as f:
-        f.write("""//HMVS01A JOB (TSO),'LUA{count:02d}',
+        with open("jcl/{count:02d}.jcl".format(count=count), "w") as f:
+            f.write("""//HMVS01A JOB (TSO),'LUA{count:02d}',
 //           CLASS=A,
 //           MSGCLASS=A,
 //           MSGLEVEL=(1,1),
