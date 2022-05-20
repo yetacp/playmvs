@@ -11,7 +11,7 @@ CC      = $(GCCMVS)/gccmvs
 CFLAGS  = -S -O3
 # -fverbose-asm
 
-INCLUDES = -I $(GCCMVS)/pdpclib
+INCLUDES = -I $(GCCMVS)/mvsclib/common/include
 
 all: asm install
 
