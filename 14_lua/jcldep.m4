@@ -46,203 +46,219 @@ jcl/06.done: lctype.s
 	touch jcl/06.done
 	sleep 2
 
-jcl/07.done: ldebug.s
-	@echo "Preparing EBCDIC for ldebug..."
+jcl/07.done: ldblib.s
+	@echo "Preparing EBCDIC for ldblib..."
 	@$(RDRPREP) jcl/07.jcl tmp.jcl_E
-	@echo "Installing ldebug..."
+	@echo "Installing ldblib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/07.done
 	sleep 2
 
-jcl/08.done: ldo.s
-	@echo "Preparing EBCDIC for ldo..."
+jcl/08.done: ldebug.s
+	@echo "Preparing EBCDIC for ldebug..."
 	@$(RDRPREP) jcl/08.jcl tmp.jcl_E
-	@echo "Installing ldo..."
+	@echo "Installing ldebug..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/08.done
 	sleep 2
 
-jcl/09.done: ldump.s
-	@echo "Preparing EBCDIC for ldump..."
+jcl/09.done: ldo.s
+	@echo "Preparing EBCDIC for ldo..."
 	@$(RDRPREP) jcl/09.jcl tmp.jcl_E
-	@echo "Installing ldump..."
+	@echo "Installing ldo..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/09.done
 	sleep 2
 
-jcl/10.done: lfunc.s
-	@echo "Preparing EBCDIC for lfunc..."
+jcl/10.done: ldump.s
+	@echo "Preparing EBCDIC for ldump..."
 	@$(RDRPREP) jcl/10.jcl tmp.jcl_E
-	@echo "Installing lfunc..."
+	@echo "Installing ldump..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/10.done
 	sleep 2
 
-jcl/11.done: lgc.s
-	@echo "Preparing EBCDIC for lgc..."
+jcl/11.done: lfunc.s
+	@echo "Preparing EBCDIC for lfunc..."
 	@$(RDRPREP) jcl/11.jcl tmp.jcl_E
-	@echo "Installing lgc..."
+	@echo "Installing lfunc..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/11.done
 	sleep 2
 
-jcl/12.done: linit.s
-	@echo "Preparing EBCDIC for linit..."
+jcl/12.done: lgc.s
+	@echo "Preparing EBCDIC for lgc..."
 	@$(RDRPREP) jcl/12.jcl tmp.jcl_E
-	@echo "Installing linit..."
+	@echo "Installing lgc..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/12.done
 	sleep 2
 
-jcl/13.done: liolib.s
-	@echo "Preparing EBCDIC for liolib..."
+jcl/13.done: linit.s
+	@echo "Preparing EBCDIC for linit..."
 	@$(RDRPREP) jcl/13.jcl tmp.jcl_E
-	@echo "Installing liolib..."
+	@echo "Installing linit..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/13.done
 	sleep 2
 
-jcl/14.done: llex.s
-	@echo "Preparing EBCDIC for llex..."
+jcl/14.done: liolib.s
+	@echo "Preparing EBCDIC for liolib..."
 	@$(RDRPREP) jcl/14.jcl tmp.jcl_E
-	@echo "Installing llex..."
+	@echo "Installing liolib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/14.done
 	sleep 2
 
-jcl/15.done: lmathlib.s
-	@echo "Preparing EBCDIC for lmathlib..."
+jcl/15.done: llex.s
+	@echo "Preparing EBCDIC for llex..."
 	@$(RDRPREP) jcl/15.jcl tmp.jcl_E
-	@echo "Installing lmathlib..."
+	@echo "Installing llex..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/15.done
 	sleep 2
 
-jcl/16.done: lmem.s
-	@echo "Preparing EBCDIC for lmem..."
+jcl/16.done: lmathlib.s
+	@echo "Preparing EBCDIC for lmathlib..."
 	@$(RDRPREP) jcl/16.jcl tmp.jcl_E
-	@echo "Installing lmem..."
+	@echo "Installing lmathlib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/16.done
 	sleep 2
 
-jcl/17.done: loadlib.s
-	@echo "Preparing EBCDIC for loadlib..."
+jcl/17.done: lmem.s
+	@echo "Preparing EBCDIC for lmem..."
 	@$(RDRPREP) jcl/17.jcl tmp.jcl_E
-	@echo "Installing loadlib..."
+	@echo "Installing lmem..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/17.done
 	sleep 2
 
-jcl/18.done: lobject.s
-	@echo "Preparing EBCDIC for lobject..."
+jcl/18.done: loadlib.s
+	@echo "Preparing EBCDIC for loadlib..."
 	@$(RDRPREP) jcl/18.jcl tmp.jcl_E
-	@echo "Installing lobject..."
+	@echo "Installing loadlib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/18.done
 	sleep 2
 
-jcl/19.done: lopcodes.s
-	@echo "Preparing EBCDIC for lopcodes..."
+jcl/19.done: lobject.s
+	@echo "Preparing EBCDIC for lobject..."
 	@$(RDRPREP) jcl/19.jcl tmp.jcl_E
-	@echo "Installing lopcodes..."
+	@echo "Installing lobject..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/19.done
 	sleep 2
 
-jcl/20.done: loslib.s
-	@echo "Preparing EBCDIC for loslib..."
+jcl/20.done: lopcodes.s
+	@echo "Preparing EBCDIC for lopcodes..."
 	@$(RDRPREP) jcl/20.jcl tmp.jcl_E
-	@echo "Installing loslib..."
+	@echo "Installing lopcodes..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/20.done
 	sleep 2
 
-jcl/21.done: lparser.s
-	@echo "Preparing EBCDIC for lparser..."
+jcl/21.done: loslib.s
+	@echo "Preparing EBCDIC for loslib..."
 	@$(RDRPREP) jcl/21.jcl tmp.jcl_E
-	@echo "Installing lparser..."
+	@echo "Installing loslib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/21.done
 	sleep 2
 
-jcl/22.done: lstate.s
-	@echo "Preparing EBCDIC for lstate..."
+jcl/22.done: lparser.s
+	@echo "Preparing EBCDIC for lparser..."
 	@$(RDRPREP) jcl/22.jcl tmp.jcl_E
-	@echo "Installing lstate..."
+	@echo "Installing lparser..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/22.done
 	sleep 2
 
-jcl/23.done: lstring.s
-	@echo "Preparing EBCDIC for lstring..."
+jcl/23.done: lstate.s
+	@echo "Preparing EBCDIC for lstate..."
 	@$(RDRPREP) jcl/23.jcl tmp.jcl_E
-	@echo "Installing lstring..."
+	@echo "Installing lstate..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/23.done
 	sleep 2
 
-jcl/24.done: lstrlib.s
-	@echo "Preparing EBCDIC for lstrlib..."
+jcl/24.done: lstring.s
+	@echo "Preparing EBCDIC for lstring..."
 	@$(RDRPREP) jcl/24.jcl tmp.jcl_E
-	@echo "Installing lstrlib..."
+	@echo "Installing lstring..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/24.done
 	sleep 2
 
-jcl/25.done: ltable.s
-	@echo "Preparing EBCDIC for ltable..."
+jcl/25.done: lstrlib.s
+	@echo "Preparing EBCDIC for lstrlib..."
 	@$(RDRPREP) jcl/25.jcl tmp.jcl_E
-	@echo "Installing ltable..."
+	@echo "Installing lstrlib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/25.done
 	sleep 2
 
-jcl/26.done: ltablib.s
-	@echo "Preparing EBCDIC for ltablib..."
+jcl/26.done: ltable.s
+	@echo "Preparing EBCDIC for ltable..."
 	@$(RDRPREP) jcl/26.jcl tmp.jcl_E
-	@echo "Installing ltablib..."
+	@echo "Installing ltable..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/26.done
 	sleep 2
 
-jcl/27.done: ltm.s
-	@echo "Preparing EBCDIC for ltm..."
+jcl/27.done: ltablib.s
+	@echo "Preparing EBCDIC for ltablib..."
 	@$(RDRPREP) jcl/27.jcl tmp.jcl_E
-	@echo "Installing ltm..."
+	@echo "Installing ltablib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/27.done
 	sleep 2
 
-jcl/28.done: lundump.s
-	@echo "Preparing EBCDIC for lundump..."
+jcl/28.done: ltm.s
+	@echo "Preparing EBCDIC for ltm..."
 	@$(RDRPREP) jcl/28.jcl tmp.jcl_E
-	@echo "Installing lundump..."
+	@echo "Installing ltm..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/28.done
 	sleep 2
 
-jcl/29.done: lvm.s
-	@echo "Preparing EBCDIC for lvm..."
+jcl/29.done: lundump.s
+	@echo "Preparing EBCDIC for lundump..."
 	@$(RDRPREP) jcl/29.jcl tmp.jcl_E
-	@echo "Installing lvm..."
+	@echo "Installing lundump..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/29.done
 	sleep 2
 
-jcl/30.done: lzio.s
-	@echo "Preparing EBCDIC for lzio..."
+jcl/30.done: lutf8lib.s
+	@echo "Preparing EBCDIC for lutf8lib..."
 	@$(RDRPREP) jcl/30.jcl tmp.jcl_E
-	@echo "Installing lzio..."
+	@echo "Installing lutf8lib..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/30.done
 	sleep 2
 
-jcl/31.done: lua.s
-	@echo "Preparing EBCDIC for lua..."
+jcl/31.done: lvm.s
+	@echo "Preparing EBCDIC for lvm..."
 	@$(RDRPREP) jcl/31.jcl tmp.jcl_E
-	@echo "Installing lua..."
+	@echo "Installing lvm..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 	touch jcl/31.done
+	sleep 2
+
+jcl/32.done: lzio.s
+	@echo "Preparing EBCDIC for lzio..."
+	@$(RDRPREP) jcl/32.jcl tmp.jcl_E
+	@echo "Installing lzio..."
+	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
+	touch jcl/32.done
+	sleep 2
+
+jcl/33.done: lua.s
+	@echo "Preparing EBCDIC for lua..."
+	@$(RDRPREP) jcl/33.jcl tmp.jcl_E
+	@echo "Installing lua..."
+	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
+	touch jcl/33.done
 	sleep 2
 

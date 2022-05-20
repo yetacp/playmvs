@@ -835,9 +835,7 @@ int luaD_pcall(lua_State *L, Pfunc func, void *u,
     lu_byte old_allowhooks = L->allowhook;
     ptrdiff_t old_errfunc = L->errfunc;
     L->errfunc = ef;
-    asm("WTO '25'");
     status = luaD_rawrunprotected(L, func, u);
-    asm("WTO '26'");
     if (unlikely(status != LUA_OK))
     { /* an error occurred? */
         StkId oldtop = restorestack(L, old_top);

@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-list = ["lapi", "lauxlib", "lbaselib", "lcode", "lcorolib", "lctype",
+list = ["lapi", "lauxlib", "lbaselib", "lcode", "lcorolib", "lctype", "ldblib",
         "ldebug", "ldo", "ldump", "lfunc", "lgc", "linit", "liolib", "llex", "lmathlib",
         "lmem", "loadlib", "lobject", "lopcodes", "loslib", "lparser", "lstate",
-        "lstring", "lstrlib", "ltable", "ltablib", "ltm", "lundump",
+        "lstring", "lstrlib", "ltable", "ltablib", "ltm", "lundump", "lutf8lib", 
         "lvm", "lzio", "lua"]
 
 with open("jcldep.m4", "w") as jf:

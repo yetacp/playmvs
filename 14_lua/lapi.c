@@ -1070,7 +1070,7 @@ LUA_API int lua_pcallk(lua_State *L, int nargs, int nresults, int errfunc,
     api_checknelems(L, nargs + 1);
     api_check(L, L->status == LUA_OK, "cannot do calls on non-normal thread");
     checkresults(L, nargs, nresults);
-    asm("WTO '20'");
+
     if (errfunc == 0)
         func = 0;
     else
@@ -1079,14 +1079,11 @@ LUA_API int lua_pcallk(lua_State *L, int nargs, int nresults, int errfunc,
         api_check(L, ttisfunction(s2v(o)), "error handler must be a function");
         func = savestack(L, o);
     }
-    asm("WTO '22'");
     c.func = L->top - (nargs + 1); /* function to be called */
     if (k == NULL || !yieldable(L))
     {                          /* no continuation or no yieldable? */
         c.nresults = nresults; /* do a 'conventional' protected call */
-        asm("WTO '23'");
         status = luaD_pcall(L, f_call, &c, savestack(L, c.func), func);
-        asm("WTO '24'");
     }
     else
     { /* prepare continuation (call is already protected by 'resume') */
@@ -1099,7 +1096,6 @@ LUA_API int lua_pcallk(lua_State *L, int nargs, int nresults, int errfunc,
         L->errfunc = func;
         setoah(ci->callstatus, L->allowhook); /* save value of 'allowhook' */
         ci->callstatus |= CIST_YPCALL;        /* function can do error recovery */
-        asm("WTO '21'");
         luaD_call(L, c.func, nresults); /* do the call */
         ci->callstatus &= ~CIST_YPCALL;
         L->errfunc = ci->u.c.old_errfunc;

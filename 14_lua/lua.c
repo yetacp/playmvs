@@ -156,9 +156,7 @@ static int docall(lua_State *L, int narg, int nres)
     lua_insert(L, base);              /* put it under function and args */
     globalL = L;                      /* to be available to 'laction' */
     setsignal(SIGINT, laction);       /* set C-signal handler */
-    asm("WTO '19'");
     status = lua_pcall(L, narg, nres, base);
-    asm("WTO '20'");
     setsignal(SIGINT, SIG_DFL); /* reset C-signal handler */
     lua_remove(L, base);        /* remove message handler from the stack */
     return status;
@@ -256,15 +254,11 @@ static int handle_script(lua_State *L, char **argv)
     {
         fname = NULL; /* stdin */
     }
-    asm("WTO '16'");
     status = luaL_loadfile(L, fname);
-    asm("WTO '17'");
     if (status == LUA_OK)
     {
         int n = pushargs(L); /* push arguments to script */
-        asm("WTO '18'");
         status = docall(L, n, LUA_MULTRET);
-        asm("WTO '19'");
     }
     return report(L, status);
 }
@@ -671,33 +665,18 @@ static int pmain(lua_State *L)
         lua_pushboolean(L, 1); /* signal for libraries to ignore env. vars. */
         lua_setfield(L, LUA_REGISTRYINDEX, "LUA_NOENV");
     }
-
-    asm("WTO '10'");
-
     luaL_openlibs(L); /* open standard libraries */
-
-    asm("WTO '11'");
-
     createargtable(L, argv, argc, script); /* create table 'arg' */
-
-    asm("WTO '12'");
-
     lua_gc(L, LUA_GCGEN, 0, 0); /* GC in generational mode */
     if (!(args & has_E))
     {                                    /* no option '-E'? */
         if (handle_luainit(L) != LUA_OK) /* run LUA_INIT */
             return 0;                    /* error running LUA_INIT */
     }
-
-    asm("WTO '13'");
-
     if (!runargs(L, argv, optlim)) /* execute arguments -e and -l */
     {
         return 0; /* something failed */
     }
-
-    asm("WTO '14'");
-
     if (script > 0)
     { /* execute main script (if there is one) */
         if (handle_script(L, argv + script) != LUA_OK)
@@ -705,9 +684,6 @@ static int pmain(lua_State *L)
             return 0; /* interrupt in case of error */
         }
     }
-
-    asm("WTO '15'");
-
     if (args & has_i) /* -i option? */
     {
         doREPL(L); /* do read-eval-print loop */
@@ -721,14 +697,10 @@ static int pmain(lua_State *L)
         }
         else
         {
-            asm("WTO '20'");
             dofile(L, NULL); /* executes stdin as a file */
         }
     }
     lua_pushboolean(L, 1); /* signal no errors */
-
-    asm("WTO '21'");
-
     return 1;
 }
 
@@ -744,11 +716,8 @@ int main(int argc, char **argv)
     lua_pushcfunction(L, &pmain);   /* to call 'pmain' in protected mode */
     lua_pushinteger(L, argc);       /* 1st argument */
     lua_pushlightuserdata(L, argv); /* 2nd argument */
-    asm("WTO '04'");
     status = lua_pcall(L, 2, 1, 0); /* do the call */
-    asm("WTO '05'");
     result = lua_toboolean(L, -1); /* get result */
-    asm("WTO '06'");
     report(L, status);
     lua_close(L);
     return (result && status == LUA_OK) ? EXIT_SUCCESS : EXIT_FAILURE;
