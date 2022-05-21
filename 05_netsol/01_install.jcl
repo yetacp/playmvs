@@ -1,4 +1,4 @@
-//AWESOME  JOB  (SETUP),
+//NETSOL  JOB  (SETUP),
 //             'Build Netsol',
 //             CLASS=A,
 //             MSGCLASS=X,
@@ -345,15 +345,15 @@ EGMSG    DS 0C EGMSG
 * (13,39) Normal Display 
          DC    X'280000'
          DC    24C' '
-         $SBA  (16,25)
-* (16,25) Bold/Intense (FG) Green 
+         $SBA  (16,21)
+* (16,21) Bold/Intense (FG) Green 
          DC    X'2841F82842F4'
          DC    C'TSO Logon ='
          DC    X'6E'
-         $SBA  (16,37)
-* (16,37) Normal Display 
+         $SBA  (16,33)
+* (16,33) Normal Display 
          DC    X'280000'
-         DC    24C' '
+         DC    32C' '
          $SBA  (19,25)
 * (19,25) Bold/Intense (FG) Green 
          DC    X'2841F82842F4'
@@ -361,7 +361,7 @@ EGMSG    DS 0C EGMSG
          $SBA  (19,58)
 * (19,58) Normal Display 
          DC    X'280000'
-         DC    32C' '
+         DC    24C' '
          $SBA  (21,33)
 * (21,33) Bold/Intense (FG) Green 
          DC    X'2841F82842F4'
@@ -370,13 +370,13 @@ EGMSG    DS 0C EGMSG
 * (21,49) Normal Display 
          DC    X'280000'
 * Insert Cursor and unprotected field
-         $SBA  (16,38)
+         $SBA  (16,33)
          DC    X'2842F2'  SA COLOR RED
          $SF   (UNPROT,HI)
          $IC
-         DC    CL20' '
+         DC    CL32' '
          DC    X'280000'
-         DC    X'1DF8'     SF (PROT,HIGH INTENSITY)
+         DC    X'1DF8'    SF (PROT,HIGH INTENSITY)
          $SBA  (17,80)
          $SF   (SKIP,HI)
 EGMSGLN EQU *-EGMSG
