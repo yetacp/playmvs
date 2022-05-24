@@ -20,3 +20,9 @@ asm: lapi.s lauxlib.s lbaselib.s lcode.s lcorolib.s lctype.s ldblib.s \
 create_jcls:
 	rm -f jcl/*.done jcl/*.jcl
 	./create_jcls.py
+
+debug:
+	@echo "Debugin application..."
+	@$(RDRPREP) 02_debug.jcl tmp.jcl_E
+	@echo "debug..."
+	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
