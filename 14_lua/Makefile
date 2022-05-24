@@ -23,6 +23,6 @@ create_jcls:
 
 debug:
 	@echo "Debugin application..."
-	@$(RDRPREP) 02_debug.jcl tmp.jcl_E
+	@$(RDRPREP) 03_debug.jcl tmp.jcl_E
 	@echo "debug..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E

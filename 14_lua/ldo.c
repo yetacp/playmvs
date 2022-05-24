@@ -165,9 +165,11 @@ int luaD_rawrunprotected(lua_State *L, Pfunc f, void *ud)
     lj.status = LUA_OK;
     lj.previous = L->errorJmp; /* chain new error handler */
     L->errorJmp = &lj;
-    asm("WTO '26'");
+
+    asm("WTO  'OI'");
+    asm("DDTBRK");
     LUAI_TRY(L, &lj, (*f)(L, ud););
-    asm("WTO '27'");
+
     L->errorJmp = lj.previous; /* restore old error handler */
     L->nCcalls = oldnCcalls;
     return lj.status;
