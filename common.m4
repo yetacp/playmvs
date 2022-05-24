@@ -31,6 +31,12 @@ execute:
 	@echo "execute..."
 	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
 
+debug:
+	@echo "Debugin application..."
+	@$(RDRPREP) 03_debug.jcl tmp.jcl_E
+	@echo "debug..."
+	nc -w1 $(HERCHOST) $(HERCPORT) < tmp.jcl_E
+
 clean:
 	rm -f *.jcl_E *.s
 
