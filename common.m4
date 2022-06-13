@@ -1,7 +1,7 @@
 # System dependent
 
 # PATH TO GCCMVS FOLDER
-GCCMVS = ../../gccmvs
+GCCMVS = ../../gcc_mvs
 RDRPREP = ../rdrprep/rdrprep
 
 HERCHOST = 127.0.0.1
