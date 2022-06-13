@@ -1,0 +1,21 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. 'REPEAT'.
+       
+       ENVIRONMENT DIVISION.
+
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-370.
+       OBJECT-COMPUTER. IBM-370.
+
+       DATA DIVISION.
+       
+       WORKING-STORAGE SECTION.
+       77  REPEAT  PIC S9(5) COMP
+                            VALUE +10.
+       77  PHRASE  PIC X(11) VALUE 'GOOD WORLD'.
+
+       PROCEDURE DIVISION.
+       START-RUN.
+           CALL 'DISPLAY' USING REPEAT, PHRASE.
+       END-RUN.
+           STOP RUN.
