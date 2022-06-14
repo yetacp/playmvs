@@ -88,6 +88,8 @@ int main(int argc, char *argv[])
     packer(packed_b, "000000000000123");
     packer(packed_c, "000000000000100");
 
+    packed_a[VLEN - 1] = packed_a[VLEN - 1] & 0xF0 | 0x0D;
+
     printf("Initial values\n");
     display("  A = ", packed_a);
     display("  B = ", packed_b);
@@ -104,7 +106,7 @@ int main(int argc, char *argv[])
     printf("\n!\nAfter A = A - B\n");
     display("  A = ", packed_a);
     a = m_cvb(packed_a);
-    printf("  CVB(A) = %d", a);
+    printf("  CVB(A)= %d", a);
 
     m_mul(packed_a, packed_b);
     printf("\n!\nAfter A = A * B\n");
