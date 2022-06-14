@@ -1,3 +1,9 @@
+## Multiplication
+- The length of the second operand must be less than or equal to 8, and
+- The first operand must have as many bytes of high-order zeroes as there are bytes (all bytes)
+in the second operand.
+
+
 ## Issues
 
 
