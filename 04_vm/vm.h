@@ -13,7 +13,7 @@ enum
     /* Stack */
     CONST,
     GLOAD,
-    GSTORE,
+    GSTOR,
     LOAD,
     STORE,
     DROP,

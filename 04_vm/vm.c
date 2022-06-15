@@ -25,8 +25,15 @@ int run()
     {
         opcode = code[pc];
         pc++;
+
         switch (opcode)
         {
+
+        case HALT:
+            /* stop the program */
+            printf("\nHALT\n");
+            return 0;
+
         case CONST:
             /* get next value from code and
             move it on top of the stack */
@@ -39,6 +46,7 @@ int run()
             }
             stack[sp] = tmpA;
             break;
+
         case GLOAD:
             addr = code[pc];
             pc++;
@@ -50,17 +58,8 @@ int run()
             }
             stack[sp] = tmpA;
             break;
-        case LOAD:
-            offset = code[pc];
-            pc++;
-            sp++;
-            if (sp >= STACK_MAX)
-            {
-                return STACK_OVERFLOW;
-            }
-            stack[sp] = stack[fp + offset];
-            break;
-        case GSTORE:
+
+        case GSTOR:
             tmpA = stack[sp];
             sp--;
             if (sp < -1)
@@ -71,6 +70,18 @@ int run()
             pc++;
             locals[addr] = tmpA;
             break;
+
+        case LOAD:
+            offset = code[pc];
+            pc++;
+            sp++;
+            if (sp >= STACK_MAX)
+            {
+                return STACK_OVERFLOW;
+            }
+            stack[sp] = stack[fp + offset];
+            break;
+
         case STORE:
             tmpA = stack[sp];
             sp--;
@@ -82,6 +93,7 @@ int run()
             pc++;
             locals[fp + offset] = tmpA;
             break;
+
         case DROP:
             sp--;
             if (sp < -1)
@@ -89,6 +101,7 @@ int run()
                 return STACK_UNDERFLOW;
             }
             break;
+
         case SWAP:
             /* ( n1 n2 - n2 n1) */
             tmpB = stack[sp];
@@ -106,6 +119,7 @@ int run()
             }
             stack[sp] = tmpA;
             break;
+
         case DUP:
             tmpA = stack[sp];
             sp++;
@@ -115,17 +129,15 @@ int run()
             }
             stack[sp] = tmpA;
             break;
-        case HALT:
-            /* stop the program */
-            printf("\nHALT\n");
-            return 0;
+
         case JMP:
-            /* Salto incondicional */
+            /* Jump */
             pc = code[pc];
             pc++;
             break;
+
         case JMPF:
-            /* Salto se falso */
+            /* Jump if false */
             addr = code[pc];
             pc++;
             if (!stack[sp])
@@ -138,6 +150,7 @@ int run()
                 return STACK_UNDERFLOW;
             }
             break;
+
         case CALL:
             /* we expect all args to be
             on the stack */
@@ -173,6 +186,7 @@ int run()
             /* move instruction pointer to target proc address */
             pc = addr;
             break;
+
         case RET:
             /* pop return value from top of the stack */
             rval = stack[sp];
@@ -205,10 +219,12 @@ int run()
             /*  leave return value on top of the stack */
             stack[sp] = rval;
             break;
+
         case I_NEG:
             /* ( n1 - -n1  )  */
             stack[sp] = -stack[sp];
             break;
+
         case I_ADD:
             /* ( n1 n2 - n1+n2 )  */
             tmpB = stack[sp];
@@ -220,6 +236,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = tmpA + tmpB;
             break;
+
         case I_SUB:
             /* ( n1 n2 - n1-n2 )  */
             tmpB = stack[sp];
@@ -231,6 +248,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = tmpA - tmpB;
             break;
+
         case I_MUL:
             /* ( n1 n2 - n1*n2 )  */
             tmpB = stack[sp];
@@ -242,6 +260,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = tmpA * tmpB;
             break;
+
         case I_DIV:
             /* ( n1 n2 - n1/n2 )  */
             tmpB = stack[sp];
@@ -253,6 +272,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = tmpA / tmpB;
             break;
+
         case I_MOD:
             /* ( n1 n2 - n1 mod n2 )  */
             tmpB = stack[sp];
@@ -264,10 +284,12 @@ int run()
             tmpA = stack[sp];
             stack[sp] = tmpA % tmpB;
             break;
+
         case NOT:
             /* ( n1 - !n1  )  */
             stack[sp] = !stack[sp];
             break;
+
         case AND:
             /* ( n1 n2 - n1 && n2 )  */
             tmpB = stack[sp];
@@ -279,6 +301,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = tmpA && tmpB;
             break;
+
         case OR:
             /* ( n1 n2 - n1 || n2 )  */
             tmpB = stack[sp];
@@ -290,6 +313,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = tmpA || tmpB;
             break;
+
         case EQ: /* EQ NOT ::= NE (n1 !== n2) */
             /* ( n1 n2 - n1 == n2 ? ) */
             tmpB = stack[sp];
@@ -301,6 +325,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = ((tmpA == tmpB) ? 1 : 0);
             break;
+
         case LT:
             /* ( n1 n2 ) LT( n1 < n2 ?) */
             /* ( n1 n2 ) LT NOT( n1 >= n2 ?) */
@@ -315,6 +340,7 @@ int run()
             tmpA = stack[sp];
             stack[sp] = ((tmpA < tmpB) ? 1 : 0);
             break;
+
         case WRITE:
             tmpA = stack[sp];
             sp--;
@@ -324,6 +350,7 @@ int run()
             }
             printf("%d ", tmpA);
             break;
+
         default:
             printf("Invalid opcode\n");
             return INVALID_OPCODE;

@@ -59,7 +59,7 @@ int code[] = {
     /* 38 */
     CONST, 0,
     /* 40 */
-    GSTORE, 0,
+    GSTOR, 0,
     /* 42 */
     GLOAD, 0,
     /* 44 - call fib(valor) with 1 parameter */
@@ -69,7 +69,7 @@ int code[] = {
     CONST, 1,
     I_ADD,
     DUP,
-    GSTORE, 0,
+    GSTOR, 0,
     CONST, 10,
     LT,
     NOT,
