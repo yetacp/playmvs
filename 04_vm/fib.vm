@@ -5,7 +5,7 @@ FIB      EQU   *
          CONST 0
 * (n == 0) ?
          EQ    
-         JMPF  @L10 * if they are NOT equal goto L10
+         JMPF  @L10 * if n != 0 goto @L10
 * ELSE
          CONST 0 
          RET   
@@ -16,30 +16,31 @@ FIB      EQU   *
          CONST 3
 * (n < 3) ?
          LT    
-         JMPF  @L20
+         JMPF  @L20 * if n >= 3 goto @L20
 * ELSE
          CONST 1
          RET
 
 @L20     EQU
+
+* fib(n-1)
          LOAD  -3 * load n
          CONST 1
-
-* [stack++] = n-1
-         I_SUB 
+         ISUB 
          CALL  FIB,1
+
+* fib(n-2)
          LOAD  -3 * load n
          CONST 2
-
-* [stack++] = n-2
-         I_SUB
+         ISUB
          CALL  FIB,1
 
-* [stack++] = fib(n-1) + fib(n-2)
-         I_ADD
+* return (fib(n-1) + fib(n-2))
+         IADD
          RET
 
 MAIN     EQU   *
+
 *        i = 0
          CONST 0
          GSTOR 0
@@ -53,7 +54,7 @@ MAIN     EQU   *
 *        i = i + 1
          GLOAD 0
          CONST 1
-         I_ADD
+         IADD
          DUP
          GSTOR 0
 

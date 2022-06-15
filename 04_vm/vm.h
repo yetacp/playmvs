@@ -37,27 +37,27 @@ enum
     GT,
     GE,
     /* Arithmetic integer operators */
-    I_NEG,
-    I_ADD,
-    I_SUB,
-    I_MUL,
-    I_DIV,
-    I_MOD,
-    I_SHL,
-    I_SHR,
+    INEG,
+    IADD,
+    ISUB,
+    IMUL,
+    IDIV,
+    IMOD,
+    ISHL,
+    ISHR,
     /* Arithmetic double floating point operators */
-    F_NEG,
-    F_ADD,
-    F_SUB,
-    F_MUL,
-    F_DIV,
-    F_MOD,
+    FNEG,
+    FADD,
+    FSUB,
+    FMUL,
+    FDIV,
+    FMOD,
     /* Arithmetic decimal operators */
-    D_NEG,
-    D_ADD,
-    D_SUB,
-    D_MUL,
-    D_DIV,
+    DNEG,
+    DADD,
+    DSUB,
+    DMUL,
+    DDIV,
     /* I/O functions */
     OPEN,
     CLOSE,
@@ -66,8 +66,8 @@ enum
     /* Dynamic Memory */
     ALLOC,
     FREE,
-    MEMSET,
-    MEMCMP
+    MSET,
+    MCMP
 };
 
 extern int code[];

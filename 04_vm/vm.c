@@ -31,8 +31,9 @@ int run()
 
         case HALT:
             /* stop the program */
-            printf("\nHALT\n");
-            return 0;
+            tmpA = stack[sp];
+            printf("\nHALT stack[%d]=%d\n", sp, tmpA);
+            return tmpA;
 
         case CONST:
             /* get next value from code and
@@ -152,8 +153,7 @@ int run()
             break;
 
         case CALL:
-            /* we expect all args to be
-            on the stack */
+            /* we expect all args to be on the stack */
             /* get next instruction as address of procedure jump */
             addr = code[pc];
             pc++;
@@ -220,12 +220,12 @@ int run()
             stack[sp] = rval;
             break;
 
-        case I_NEG:
+        case INEG:
             /* ( n1 - -n1  )  */
             stack[sp] = -stack[sp];
             break;
 
-        case I_ADD:
+        case IADD:
             /* ( n1 n2 - n1+n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -237,7 +237,7 @@ int run()
             stack[sp] = tmpA + tmpB;
             break;
 
-        case I_SUB:
+        case ISUB:
             /* ( n1 n2 - n1-n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -249,7 +249,7 @@ int run()
             stack[sp] = tmpA - tmpB;
             break;
 
-        case I_MUL:
+        case IMUL:
             /* ( n1 n2 - n1*n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -261,7 +261,7 @@ int run()
             stack[sp] = tmpA * tmpB;
             break;
 
-        case I_DIV:
+        case IDIV:
             /* ( n1 n2 - n1/n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -273,7 +273,7 @@ int run()
             stack[sp] = tmpA / tmpB;
             break;
 
-        case I_MOD:
+        case IMOD:
             /* ( n1 n2 - n1 mod n2 )  */
             tmpB = stack[sp];
             sp--;
