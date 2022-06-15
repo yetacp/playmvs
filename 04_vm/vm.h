@@ -9,31 +9,65 @@
 
 enum
 {
-    CONST = 1,
+    HALT = 0,
+    /* Stack */
+    CONST,
     GLOAD,
-    LOAD,
     GSTORE,
+    LOAD,
     STORE,
     DROP,
     SWAP,
     DUP,
-    HALT,
+    /* Branch */
     JMP,
     JMPF,
     CALL,
     RET,
-    NEG,
-    ADD,
-    SUB,
-    MUL,
-    DIV,
-    MOD,
+    /* Boolean operators */
     NOT,
     AND,
     OR,
-    LT,
+    XOR,
+    /* Relational operators */
     EQ,
-    PRINT
+    NE,
+    LT,
+    LE,
+    GT,
+    GE,
+    /* Arithmetic integer operators */
+    I_NEG,
+    I_ADD,
+    I_SUB,
+    I_MUL,
+    I_DIV,
+    I_MOD,
+    I_SHL,
+    I_SHR,
+    /* Arithmetic double floating point operators */
+    F_NEG,
+    F_ADD,
+    F_SUB,
+    F_MUL,
+    F_DIV,
+    F_MOD,
+    /* Arithmetic decimal operators */
+    D_NEG,
+    D_ADD,
+    D_SUB,
+    D_MUL,
+    D_DIV,
+    /* I/O functions */
+    OPEN,
+    CLOSE,
+    READ,
+    WRITE,
+    /* Dynamic Memory */
+    ALLOC,
+    FREE,
+    MEMSET,
+    MEMCMP
 };
 
 extern int code[];

@@ -5,7 +5,7 @@ int locals[STACK_MAX];
 /* virtual stack */
 int stack[STACK_MAX];
 
-int main(int argc, char *argv[])
+int run()
 {
     /* program counter */
     register int pc = 38;
@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     register int addr;
     register int offset;
     register int rval;
+    register int argc;
 
     do
     {
@@ -204,11 +205,11 @@ int main(int argc, char *argv[])
             /*  leave return value on top of the stack */
             stack[sp] = rval;
             break;
-        case NEG:
+        case I_NEG:
             /* ( n1 - -n1  )  */
             stack[sp] = -stack[sp];
             break;
-        case ADD:
+        case I_ADD:
             /* ( n1 n2 - n1+n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -219,7 +220,7 @@ int main(int argc, char *argv[])
             tmpA = stack[sp];
             stack[sp] = tmpA + tmpB;
             break;
-        case SUB:
+        case I_SUB:
             /* ( n1 n2 - n1-n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -230,7 +231,7 @@ int main(int argc, char *argv[])
             tmpA = stack[sp];
             stack[sp] = tmpA - tmpB;
             break;
-        case MUL:
+        case I_MUL:
             /* ( n1 n2 - n1*n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -241,7 +242,7 @@ int main(int argc, char *argv[])
             tmpA = stack[sp];
             stack[sp] = tmpA * tmpB;
             break;
-        case DIV:
+        case I_DIV:
             /* ( n1 n2 - n1/n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -252,7 +253,7 @@ int main(int argc, char *argv[])
             tmpA = stack[sp];
             stack[sp] = tmpA / tmpB;
             break;
-        case MOD:
+        case I_MOD:
             /* ( n1 n2 - n1 mod n2 )  */
             tmpB = stack[sp];
             sp--;
@@ -314,7 +315,7 @@ int main(int argc, char *argv[])
             tmpA = stack[sp];
             stack[sp] = ((tmpA < tmpB) ? 1 : 0);
             break;
-        case PRINT:
+        case WRITE:
             tmpA = stack[sp];
             sp--;
             if (sp < -1)
@@ -329,4 +330,9 @@ int main(int argc, char *argv[])
         }
     } while (1);
     return 0;
+}
+
+int main(int argc, char *argv[])
+{
+    run();
 }

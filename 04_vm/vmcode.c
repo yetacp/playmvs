@@ -37,7 +37,7 @@ int code[] = {
     /* 22 - put 1 */
     CONST, 1,
     /* 24 - calculate: N-1, result is on the stack */
-    SUB,
+    I_SUB,
     /* 25 - call fib function with 1 arg. from the stack */
     CALL, FIB, 1,
     /* 28 - load last function argument N */
@@ -45,12 +45,12 @@ int code[] = {
     /* 30 - put 2 */
     CONST, 2,
     /* 32 - calculate: N-2, result is on the stack */
-    SUB,
+    I_SUB,
     /* 33 - call fib function with 1 arg. from the stack */
     CALL, FIB, 1,
     /* 36 - since 2 fibs pushed their
     ret values on the stack, just add them */
-    ADD,
+    I_ADD,
     /* 37 - return from procedure */
     RET,
 
@@ -64,10 +64,10 @@ int code[] = {
     GLOAD, 0,
     /* 44 - call fib(valor) with 1 parameter */
     CALL, FIB, 1,
-    PRINT,
+    WRITE,
     GLOAD, 0,
     CONST, 1,
-    ADD,
+    I_ADD,
     DUP,
     GSTORE, 0,
     CONST, 10,
