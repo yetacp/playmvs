@@ -28,7 +28,7 @@ send_token(){
 
 clear
 
-./03_initdb_sqlite.py
+# ./01_initdb_sqlite.py
 
 cd test
 rm -f *.csv
@@ -77,8 +77,6 @@ send_DELETE '/api/products/1 ' 'products_03' 'delete product 1'
 send_DELETE '/api/products/10' 'products_04' 'delete product 10'
 send_GET    '/api/products   ' 'products_05' 'all products'
 send_GET    '/api/products/1 ' 'products_06' 'try to find product 1'
-
-
 
 echo "......................................................................."
 echo "See results in test folder"
