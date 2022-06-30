@@ -3,6 +3,7 @@ include ../common.m4
 CFLAGS  = -S -O0
 
 asm: main.s \
+	sendmessage.s \
 	screens/frm_main.s \
 	screens/frm_client_list.s \
 	screens/frm_client_new.s \
