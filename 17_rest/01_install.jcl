@@ -29,8 +29,6 @@ $$
 ::A client_list.s
 ./ ADD NAME=CNEW
 ::A client_new.s
-./ ADD NAME=REST
-::A main.s
 ./ ADD NAME=FCEDIT
 ::A frm_client_edit.s
 ./ ADD NAME=FCLIST
@@ -39,6 +37,8 @@ $$
 ::A frm_main.s
 ./ ADD NAME=FCNEW
 ::A frm_client_new.s
+./ ADD NAME=REST
+::A main.s
 ./ ADD NAME=SENDMSG
 ::A sendmessage.s
 $$
