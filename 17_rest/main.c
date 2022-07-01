@@ -3,31 +3,12 @@
 #include <string.h>
 #include <time.h>
 
-#include "../08_fss/fss.h"
-#include "../08_fss/aux.h"
-#include "../08_fss/screen.h"
-#include "sendmessage.h"
-
 #include "screens/frm_main.h"
-#include "screens/frm_client_list.h"
-#include "screens/frm_client_new.h"
-#include "screens/frm_client_edit.h"
-
 #include "main.h"
-
-#define RESPONSE_SIZE 2048
-
-typedef int Boolean;
-#define true (1)
-#define false (0)
 
 /* Warning: no problem with long names for static members */
 
-/* ================================================================== */
-/* API REST */
-/* ================================================================== */
-
-static void getDate(char *str)
+void getDate(char *str)
 {
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
@@ -37,6 +18,9 @@ static void getDate(char *str)
 /* ================================================================== */
 /* Main screen */
 /* ================================================================== */
+
+Screen screens[SCREEN_MAX];
+
 static void main_OnInit(void)
 {
     smain();
@@ -81,144 +65,9 @@ static int main_OnFinalize(void)
 {
 }
 
-/* ================================================================== */
-/* Client list screen */
-/* ================================================================== */
-
-static void clientList_OnInit(void)
-{
-    sclist();
-
-    char d[11];
-    getDate(d);
-    fssSetField(FSCLIST_00001, d);
-
-    char *request = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
-    char buffer[RESPONSE_SIZE + 1];
-
-    strcpy(buffer, request);
-    if (sendmessage("127.0.0.1", 3000, buffer, RESPONSE_SIZE) > 0)
-    {
-        char line[256];
-        int line_number = 0;
-        int line_position = 0;
-        int buffer_position = 0;
-        char last_char = buffer[0];
-        Boolean afterEmptyLine = false;
-
-        do
-        {
-            line[line_position] = buffer[buffer_position];
-            if (buffer[buffer_position] == '\r')
-            {
-                // ignore return
-                buffer_position++;
-                continue;
-            }
-            if (buffer[buffer_position] == '\n')
-            {
-                if (afterEmptyLine)
-                {
-                    line[line_position] = 0; /* NULL terminated string */
-                    line_number++;
-                    printf("LINE %.02d: %s\n", line_number, line);
-                    line_position = 0;
-                }
-                if (last_char == '\n')
-                {
-                    afterEmptyLine = true;
-                }
-                last_char = '\n';
-            }
-            else
-            {
-                last_char = buffer[buffer_position];
-                line_position++;
-            }
-
-            buffer_position++;
-        } while (buffer[buffer_position]);
-    }
-}
-
-static void clientList_OnSetCursor(void)
-{
-    fssSetCursor(FSCLIST_00002);
-}
-
-static int clientList_OnSubmit(int aid, int *screen)
-{
-    switch (aid)
-    {
-    case fssPFK03:
-    case fssPFK15:
-        *screen = SCREEN_MAIN;
-        break;
-    case fssPFK05:
-        *screen = SCREEN_NEW;
-        break;
-    default:
-        break;
-    }
-    return 0;
-}
-
-/* ================================================================== */
-/* Client new screen */
-/* ================================================================== */
-
-static void clientNew_OnInit(void)
-{
-    scnew();
-    char d[11];
-    getDate(d);
-    fssSetField(FSCNEW_00001, d);
-}
-
-static void clientNew_OnSetCursor(void)
-{
-    fssSetCursor(FSCNEW_00002);
-}
-
-static int clientNew_OnSubmit(int aid, int *screen)
-{
-    if (aid == fssPFK03 || aid == fssPFK15)
-    {
-        *screen = SCREEN_LIST;
-    }
-    return 0;
-}
-
-/* ================================================================== */
-/* Client edit screen */
-/* ================================================================== */
-
-static void clientEdit_OnInit(void)
-{
-    scedit();
-
-    char d[11];
-    getDate(d);
-    fssSetField(FSCEDIT_00001, d);
-}
-
-static void clientEdit_OnSetCursor(void)
-{
-    fssSetCursor(FSCEDIT_00002);
-}
-
-static int clientEdit_OnSubmit(int aid, int *screen)
-{
-    if (aid == fssPFK03 || aid == fssPFK15)
-    {
-        *screen = SCREEN_LIST;
-    }
-    return 0;
-}
-
 /* Table for event oriented programming :) */
 
-static Screen screens[SCREEN_MAX] = {
+Screen screens[SCREEN_MAX] = {
     {.onInit = main_OnInit,
      .onSetCursor = main_OnSetCursor,
      .onSubmit = main_OnSubmit,
