@@ -5,9 +5,12 @@
 #include "../08_fss/aux.h"
 #include "../08_fss/screen.h"
 
-typedef int Boolean;
+typedef int bool;
 #define true (1)
 #define false (0)
+
+#define SERVER_IP "127.0.0.1"
+#define SERVER_PORT 3000
 
 typedef enum EnumScreen
 {

@@ -8,57 +8,50 @@
 
 void clientList_OnInit(void)
 {
-    sclist();
-
+    char *FIND_CLIENTS = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
     char d[11];
+    char buffer[RESPONSE_SIZE + 1];
+
+    sclist();
     getDate(d);
     fssSetField(FSCLIST_00001, d);
 
-    char *REQUEST = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
-    char buffer[RESPONSE_SIZE + 1];
-
-    strcpy(buffer, REQUEST);
-    if (sendmessage("127.0.0.1", 3000, buffer, RESPONSE_SIZE) > 0)
+    strcpy(buffer, FIND_CLIENTS);
+    if (sendmessage(SERVER_IP, SERVER_PORT, buffer, RESPONSE_SIZE) > 0)
     {
-        char line[256];
         int line_number = 0;
-        int line_position = 0;
-        int buffer_position = 0;
-        char last_char = buffer[0];
-        Boolean afterEmptyLine = false;
+        int position = 0;
+        char lastChar = buffer[position];
+        bool afterFirstLine = false;
+        int initial = 0;
 
-        do
+        while (buffer[position])
         {
-            line[line_position] = buffer[buffer_position];
-            if (buffer[buffer_position] == '\r')
+            switch (buffer[position])
             {
-                // ignore return
-                buffer_position++;
+            case '\r':
+                // ignore
+                position++;
                 continue;
-            }
-            if (buffer[buffer_position] == '\n')
-            {
-                if (afterEmptyLine)
+            case '\n':
+                if (afterFirstLine)
                 {
-                    line[line_position] = 0; /* NULL terminated string */
                     line_number++;
-                    printf("LINE %.02d: %s\n", line_number, line);
-                    line_position = 0;
+                    printf("LINE %.02d: %.*s\n", line_number, position - initial, &buffer[initial]);   
                 }
-                if (last_char == '\n')
+                else if (lastChar == '\n')
                 {
-                    afterEmptyLine = true;
+                    afterFirstLine = true;
                 }
-                last_char = '\n';
-            }
-            else
-            {
-                last_char = buffer[buffer_position];
-                line_position++;
-            }
+                initial = position + 1;
+                break;
+            default:
 
-            buffer_position++;
-        } while (buffer[buffer_position]);
+                break;
+            }
+            lastChar = buffer[position];
+            position++;
+        }
     }
 }
 
