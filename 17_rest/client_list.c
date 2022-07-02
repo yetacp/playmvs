@@ -14,10 +14,10 @@ void clientList_OnInit(void)
     getDate(d);
     fssSetField(FSCLIST_00001, d);
 
-    char *request = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
+    char *REQUEST = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
     char buffer[RESPONSE_SIZE + 1];
 
-    strcpy(buffer, request);
+    strcpy(buffer, REQUEST);
     if (sendmessage("127.0.0.1", 3000, buffer, RESPONSE_SIZE) > 0)
     {
         char line[256];
