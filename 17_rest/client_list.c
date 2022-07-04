@@ -4,7 +4,7 @@
 
 #include "main.h"
 #include "screens/frm_client_list.h"
-#include "sendmessage.h"
+#include "../15_tcpip/ezasmi.h"
 
 int split(char *buffer, int initial, int *index, char separator)
 {

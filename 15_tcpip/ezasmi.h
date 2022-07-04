@@ -30,4 +30,8 @@ Sint32 ez_gethn(char *name, char *hostent, Sint32 *errno);
 
 Sint32 ez_getpn(Sint16 *desc, Socket *socket, Sint32 *errno);
 
+#define RESPONSE_SIZE 2048
+#define sendmessage SENDMSG
+Sint32 sendmessage(char *ip, int port, char *buffer, int size);
+
 #endif

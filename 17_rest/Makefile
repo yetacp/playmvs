@@ -9,8 +9,7 @@ asm: main.s \
 	screens/frm_client_edit.s \
 	screens/frm_client_list.s \
 	screens/frm_client_new.s \
-	screens/frm_main.s \
-	sendmessage.s
+	screens/frm_main.s
 
 screens:
 	./ansi2fss.py smain screens/frm_main.ans

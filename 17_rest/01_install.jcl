@@ -39,8 +39,6 @@ $$
 ::A frm_client_new.s
 ./ ADD NAME=REST
 ::A main.s
-./ ADD NAME=SENDMSG
-::A sendmessage.s
 $$
 /* ------------------------------------------
 //TCSASM PROC M=
@@ -89,17 +87,16 @@ $$
  INCLUDE PDPLIB(STRING)
  INCLUDE PDPLIB(TIME)
  INCLUDE EZALIB(EZASOH03)
+ INCLUDE LOADLIB(EZASMI)
  INCLUDE LOADLIB(FSS)
  INCLUDE OBJLIB(CEDIT)
  INCLUDE OBJLIB(CLIST)
  INCLUDE OBJLIB(CNEW)
- INCLUDE OBJLIB(EZASMI)
  INCLUDE OBJLIB(FCEDIT)
  INCLUDE OBJLIB(FCLIST)
  INCLUDE OBJLIB(FCNEW)
  INCLUDE OBJLIB(FMAIN)
  INCLUDE OBJLIB(REST)
- INCLUDE OBJLIB(SENDMSG)
  ENTRY @@MAIN
  NAME REST(R)                                 
 $$                                                         

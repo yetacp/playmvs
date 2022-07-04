@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "sendmessage.h"
-#include "../15_tcpip/ezasmi.h"
+#include "ezasmi.h"
 
 Sint32 sendmessage(char *ip, int port, char *buffer, int size)
 {
