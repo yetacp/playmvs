@@ -6,11 +6,36 @@
 #include "screens/frm_client_list.h"
 #include "sendmessage.h"
 
+int split(char *buffer, int initial, int *index, char separator)
+{
+    int total = 0;
+    int position = initial;
+    int start = initial;
+
+    while (buffer[position] != 0)
+    {
+        if (buffer[position] == separator || buffer[position] == '\n')
+        {
+            index[total] = position - start > 0 ? start - initial : -1;
+            start = position + 1;
+            total++;
+            if (buffer[position] == '\n')
+            {
+                break;
+            }
+        }
+        position++;
+    }
+    return total;
+}
+
 void clientList_OnInit(void)
 {
     char *FIND_CLIENTS = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
     char d[11];
+    int index[10];
     char buffer[RESPONSE_SIZE + 1];
+    int i;
 
     sclist();
     getDate(d);
@@ -25,6 +50,8 @@ void clientList_OnInit(void)
         bool afterFirstLine = false;
         int initial = 0;
 
+        printf("         0         1         2         3     \n");
+        printf("         012345678901234567890123456789012345\n");
         while (buffer[position])
         {
             switch (buffer[position])
@@ -37,7 +64,14 @@ void clientList_OnInit(void)
                 if (afterFirstLine)
                 {
                     line_number++;
-                    printf("LINE %.02d: %.*s\n", line_number, position - initial, &buffer[initial]);   
+                    int length = position - initial;
+                    printf("LINE %.02d: %.*s\n         ", line_number, length, &buffer[initial]);
+                    int total = split(buffer, initial, index, ';');
+                    for (i = 0; i < total; i++)
+                    {
+                        printf("%d:%d ", i, index[i]);
+                    }
+                    printf("\n");
                 }
                 else if (lastChar == '\n')
                 {
@@ -46,7 +80,6 @@ void clientList_OnInit(void)
                 initial = position + 1;
                 break;
             default:
-
                 break;
             }
             lastChar = buffer[position];
