@@ -1,19 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-
 #include "screens/frm_main.h"
 #include "main.h"
 
 /* Warning: no problem with long names for static members */
-
-void getDate(char *str)
-{
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    sprintf(str, "%4d.%02d.%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
-}
 
 /* ================================================================== */
 /* Main screen */
@@ -23,17 +14,19 @@ Screen screens[SCREEN_MAX];
 
 static void main_OnInit(void)
 {
-    smain();
-
     char d[11];
-    getDate(d);
+    char t[6];
+
+    getDateTime(d, t);
+    smain();
     fssSetField(FSMAIN_00001, d);
-    fssSetField(FSMAIN_00002, " ");
+    fssSetField(FSMAIN_00002, t);
+    fssSetField(FSMAIN_00003, " ");
 }
 
 static void main_OnSetCursor(void)
 {
-    fssSetCursor(FSMAIN_00002);
+    fssSetCursor(FSMAIN_00003);
 }
 
 static int main_OnSubmit(int aid, int *screen)

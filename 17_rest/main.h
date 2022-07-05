@@ -4,6 +4,7 @@
 #include "../08_fss/fss.h"
 #include "../08_fss/aux.h"
 #include "../08_fss/screen.h"
+#include "../15_tcpip/ezasmi.h"
 
 typedef int bool;
 #define true (1)
@@ -11,6 +12,9 @@ typedef int bool;
 
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 3000
+#define RESPONSE_SIZE 2048
+
+#define FIND_CLIENTS "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n"
 
 typedef enum EnumScreen
 {
@@ -23,8 +27,11 @@ typedef enum EnumScreen
 
 extern Screen screens[SCREEN_MAX];
 
-#define getDate GETDATE
-extern void getDate(char *str);
+#define getDateTime GETDATE
+extern void getDateTime(char *_sdate, char *_stime);
+
+#define split SPLIT
+extern int split(char *buffer, int initial, int *index, char separator);
 
 #define clientList_OnInit ON001
 extern void clientList_OnInit(void);

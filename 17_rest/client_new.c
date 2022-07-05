@@ -7,15 +7,18 @@
 
 void clientNew_OnInit(void)
 {
-    scnew();
     char d[11];
-    getDate(d);
+    char t[6];
+
+    getDateTime(d, t);
+    scnew();
     fssSetField(FSCNEW_00001, d);
+    fssSetField(FSCNEW_00002, t);
 }
 
 void clientNew_OnSetCursor(void)
 {
-    fssSetCursor(FSCNEW_00002);
+    fssSetCursor(FSCNEW_00003);
 }
 
 int clientNew_OnSubmit(int aid, int *screen)

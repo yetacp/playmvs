@@ -1,46 +1,24 @@
 /* ================================================================== */
 /* Client list screen */
 /* ================================================================== */
-
+#include <stdlib.h>
 #include "main.h"
 #include "screens/frm_client_list.h"
-#include "../15_tcpip/ezasmi.h"
-
-int split(char *buffer, int initial, int *index, char separator)
-{
-    int total = 0;
-    int position = initial;
-    int start = initial;
-
-    while (buffer[position] != 0)
-    {
-        if (buffer[position] == separator || buffer[position] == '\n')
-        {
-            index[total] = position - start > 0 ? start - initial : -1;
-            start = position + 1;
-            total++;
-            if (buffer[position] == '\n')
-            {
-                break;
-            }
-        }
-        position++;
-    }
-    return total;
-}
 
 void clientList_OnInit(void)
 {
-    char *FIND_CLIENTS = "GET /api/clients HTTP/1.1\nHost: 127.0.0.1\n\n\n";
-    char d[11];
     int index[10];
-    char buffer[RESPONSE_SIZE + 1];
     int i;
+    char d[11];
+    char t[6];
+
+    getDateTime(d, t);
 
     sclist();
-    getDate(d);
     fssSetField(FSCLIST_00001, d);
+    fssSetField(FSCLIST_00002, t);
 
+    char *buffer = malloc(RESPONSE_SIZE + 1);
     strcpy(buffer, FIND_CLIENTS);
     if (sendmessage(SERVER_IP, SERVER_PORT, buffer, RESPONSE_SIZE) > 0)
     {
@@ -86,11 +64,12 @@ void clientList_OnInit(void)
             position++;
         }
     }
+    free(buffer);
 }
 
 void clientList_OnSetCursor(void)
 {
-    fssSetCursor(FSCLIST_00002);
+    fssSetCursor(FSCLIST_00003);
 }
 
 int clientList_OnSubmit(int aid, int *screen)

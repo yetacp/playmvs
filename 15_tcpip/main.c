@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "ezasmi.h"
 
-#define RESPONSE_SIZE 1024
+#define RESPONSE_SIZE 2048
 
 int main(int argc, char *argv[])
 {

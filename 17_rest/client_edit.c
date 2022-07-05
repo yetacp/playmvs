@@ -7,16 +7,18 @@
 
 void clientEdit_OnInit(void)
 {
-    scedit();
-
     char d[11];
-    getDate(d);
+    char t[6];
+    getDateTime(d, t);
+
+    scedit();
     fssSetField(FSCEDIT_00001, d);
+    fssSetField(FSCEDIT_00002, t);
 }
 
 void clientEdit_OnSetCursor(void)
 {
-    fssSetCursor(FSCEDIT_00002);
+    fssSetCursor(FSCEDIT_00003);
 }
 
 int clientEdit_OnSubmit(int aid, int *screen)
